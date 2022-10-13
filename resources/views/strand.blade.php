@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Template Mo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,8 +19,7 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>
@@ -114,20 +116,6 @@
             </div>
         </div>
     </footer>
-    @if (session()->pull('errorLogin'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'Wrong Username or Password, Please Try Again!',
-                    showConfirmButton: false,
-                    timer: 1300
-                });
-            }, 1500);
-        </script>;
-        {{ session()->forget('errorLogin') }}
-    @endif
     <div class="modal fade " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

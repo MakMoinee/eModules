@@ -603,7 +603,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #f55858;
+  color: #ffffff;
 }
 
 @media (max-width: 1200px) {
@@ -722,7 +722,8 @@ welcome
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(../images/banner-bg.png);
+  /* background-image: url(../images/banner-bg.png); */
+  background-color: #ff00e1;
   background-repeat: no-repeat;
 /*
 TRY IT ... with or without CENTER CENTER
@@ -1377,7 +1378,7 @@ preloader
 */
 #preloader {
   overflow: hidden;
-  background-image: linear-gradient(145deg, #00b4c6 0%, #0088e8 100%);
+  background-image: linear-gradient(145deg, #ff00e1 0%, #ff00e1 100%);
   left: 0;
   right: 0;
   top: 0;
