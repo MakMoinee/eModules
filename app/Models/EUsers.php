@@ -16,6 +16,12 @@ class EUsers extends Model
     protected $fillable = [
         'username',
         'password',
-        'userType'
+        'userType',
+        "firstname",
+        "middlename" ,
+        "lastname",
+        "lrn",
+        "track" ,
+        "email" ,
     ];
 }

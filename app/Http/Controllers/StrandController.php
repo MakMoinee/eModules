@@ -2,29 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EUsers;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-class HomeController extends Controller
+class StrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
+        if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            $tempUsers = EUsers::all();
-            $count = count($tempUsers);
-            return view('main', ['users' => $user, 'totalUsers' => $count]);
+            return view('strand2', ['track' => $user[0]['track']]);
         } else {
-            return view('welcome');
+            return view('strand');
         }
     }
 

@@ -4,28 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\EUsers;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Hash;
 
-class HomeController extends Controller
+class SignUpController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
-            $user = session()->pull("users");
-            session()->put('users', $user);
-            $tempUsers = EUsers::all();
-            $count = count($tempUsers);
-            return view('main', ['users' => $user, 'totalUsers' => $count]);
-        } else {
-            return view('welcome');
-        }
+        return redirect("/");
     }
 
     /**
@@ -46,7 +36,28 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ($request->btnSignup) {
+            $euser = new EUsers();
+            $euser->username = $request->username;
+            $euser->password = Hash::make($request->password);
+            $euser->firstname = $request->firstname;
+            $euser->middlename = $request->middlename;
+            $euser->lastname = $request->lastname;
+            $euser->lrn = $request->lrn;
+            $euser->track = $request->track;
+            $euser->email = $request->email;
+            $euser->userType = 2;
+            $isSave = $euser->save();
+            if ($isSave) {
+                session()->put("successCreate", true);
+                return redirect("/");
+            }
+            session()->put("errorCreate", true);
+            return redirect("/");
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

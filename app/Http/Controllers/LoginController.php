@@ -15,7 +15,15 @@ class LoginController extends Controller
     public function index()
     {
         //
-        return redirect("/");
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+            $tempUsers = EUsers::all();
+            $count = count($tempUsers);
+            return view('main', ['users' => $user, 'totalUsers' => $count]);
+        } else {
+            return redirect("/");
+        }
     }
 
     /**

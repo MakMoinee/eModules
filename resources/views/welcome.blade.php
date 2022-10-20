@@ -48,10 +48,11 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="#services">Academic Strands</a></li>
+                            <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup">Signup</a></li>
+                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#signUpModal">Signup</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -76,7 +77,8 @@
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Junior and Senior High School</p>
-                        <a href="#about" class="main-button-slider">Signup</a>
+                        <a href="#about" class="main-button-slider" data-toggle="modal"
+                        data-target="#signUpModal">Signup</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
@@ -128,6 +130,115 @@
         </script>;
         {{ session()->forget('errorLogin') }}
     @endif
+
+    @if (session()->pull('errorCreate'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to Create Account, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorCreate') }}
+    @endif
+
+    @if (session()->pull('successCreate'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Created Account',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successCreate') }}
+    @endif
+
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 450px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Signup</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form action="/signup" method="POST" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+                            <div class="form-group" style="margin-left: 60px;">
+                                <label for="Username" class="for">Username</label>
+                                <label for="Firstname" class="for" style="margin-left: 110px;">First Name</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="text" name="username" id="" style="width:150px;">
+                                <input required type="text" name="firstname" id=""
+                                    style="width:150px;margin-left: 33px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="Middlename" class="for">Middle Name</label>
+                                <label for="Lastname" class="for" style="margin-left: 89px;">Last Name</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="text" name="middlename" id=""
+                                    style="width:150px;">
+                                <input required type="text" name="lastname" id=""
+                                    style="width:150px;margin-left: 33px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="lrn" class="for">LRN</label>
+                                <label for="Track" class="for" style="margin-left: 153px;">Track</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="text" name="lrn" id="" style="width:150px;">
+                                <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
+                                    <option value="ABM" selected>ABM</option>
+                                    <option value="GAS">GAS</option>
+                                    <option value="HUMMS">HUMMS</option>
+                                    <option value="STEM">STEM</option>
+                                    <option value="TVL">TVL
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="password" class="for">Password</label>
+                                <label for="Email" class="for" style="margin-left: 111px;">Email</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="password" name="password" id="password" style="width:150px;">
+                                <input required type="email" name="email" id=""
+                                    style="width:150px;margin-left: 33px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="password" class="for">Retype Password</label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="password" name="repassword" id="repassword"
+                                    style="width:150px;">
+                            </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="btnSignup"
+                        style="background-color: #ff589e" value="yes">Sign Up</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -185,7 +296,21 @@
 
     <!-- Global Init -->
     <script src="js/custom.js"></script>
+    <script>
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("repassword");
 
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 </body>
 
 </html>

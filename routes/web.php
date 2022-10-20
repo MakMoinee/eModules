@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignOutController;
+use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\StrandController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/logout', [SignOutController::class, 'index']);
 Route::resource('/login', LoginController::class);
+Route::resource('/signup', SignUpController::class);
+Route::resource('/strands', StrandController::class);
