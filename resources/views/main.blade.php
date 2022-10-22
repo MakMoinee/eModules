@@ -43,14 +43,16 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="#" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
+                            <li class="scroll-to-section"><a href="/" style="color:#f55858 !important;">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
                             <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
-                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal" data-target="#logOutModal">Sign Out</a></li>
+                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#logOutModal">Sign Out</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -65,7 +67,9 @@
 
 
     <!-- ***** Welcome Area Start ***** -->
+
     <div class="welcome-area" id="welcome">
+        <img src="/images/banner.png" alt="" srcset="" style="width: 100%;">
 
         <!-- ***** Header Text Start ***** -->
         {{-- <div class="header-text">

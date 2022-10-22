@@ -43,7 +43,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="#" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">

@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        if (session()->exists("users")) {
+        $has = $request->session()->has('users');
+        if ($has) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            $tempUsers = EUsers::all();
-            $count = count($tempUsers);
-            return view('main', ['users' => $user, 'totalUsers' => $count]);
+            return view('profile', ['user' => $user[0]]);
         } else {
             return redirect("/");
         }
@@ -33,7 +34,6 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -44,34 +44,36 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $un = $request->username;
-        $pw = $request->password;
+        $has = $request->session()->has('users');
+        if ($has) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
 
-        if ($un && $pw) {
-            $queryResult = EUsers::where([['username', '=', $un]])->get();
-            $users =  json_decode($queryResult, true);
-            $user = [];
-            $tempUsers = EUsers::all();
-            $count = count($tempUsers);
-            foreach ($users as $u) {
-                if (password_verify($pw, $u['password'])) {
-                    $u['userID'] = $u['userID'];
-                    $u['password'] = $pw;
-                    array_push($user, $u);
-                    break;
-                }
-            }
+          
 
-            if (count($user) == 0) {
-                session()->put('errorLogin', true);
-                return view('welcome');
-            } else {
+
+            $affectedRow = DB::table('e_users')
+                ->where('userID', $request->uid)
+                ->update([
+                    'firstname' => $request->firstname,
+                    'middlename' => $request->middlename,
+                    'lastname' => $request->lastname,
+                    'email' => $request->email,
+                ]);
+
+            if ($affectedRow > 0) {
+                $user[0]['firstname'] = $request->firstname;
+                $user[0]['middlename'] = $request->middlename;
+                $user[0]['lastname'] = $request->lastname;
+                $user[0]['email'] = $request->email;
                 session()->put('users', $user);
-                session()->put('successLogin', true);
-                return view('main', ['users' => $user, 'totalUsers' => $count]);
+                session()->put("successUpdate", true);
+            } else {
+                session()->put("errorUpdate", true);
             }
+            return view('profile', ['user' => $user[0]]);
         } else {
-            return view('welcome');
+            return redirect("/");
         }
     }
 

@@ -45,12 +45,13 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="#" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
+                            <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="#services">Academic Strands</a></li>
+                            <li class="scroll-to-section "><a style="color:#f55858 !important; " href="#services">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
                             <li class="scroll-to-section"><a href="#signup">Signup</a></li>

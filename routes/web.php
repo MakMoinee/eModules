@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignOutController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\StrandController;
@@ -23,3 +24,4 @@ Route::get('/logout', [SignOutController::class, 'index']);
 Route::resource('/login', LoginController::class);
 Route::resource('/signup', SignUpController::class);
 Route::resource('/strands', StrandController::class);
+Route::resource('/profile', ProfileController::class);

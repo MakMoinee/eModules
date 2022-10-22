@@ -20,7 +20,7 @@
     <script src="sweetalert2.all.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #ff589e">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -48,10 +48,10 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic Strands</a>
-                            </li>
-                            <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
+                            <li class="scroll-to-section"><a href="/about">About</a></li>
+                            <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
+                            <li class="scroll-to-section"><a href="/profile" style="color:#f55858 !important;">My
+                                    Profile</a></li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
                                     data-target="#logOutModal">Sign Out</a></li>
                         </ul>
@@ -68,119 +68,66 @@
 
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
+    <div class="container">
+        <div class="row">
+            <div class="mdiv-left" style="width: 30%; height: 500px; margin-top: 120px;  background-color: #d5d5d5">
+                <center>
+                    <img style="margin-top: 20px;" src="/images/profile.png" alt="" srcset=""
+                        width="200px" height="200px">
+                    <br>
+                    <br>
+                    <a href="#">Edit Avatar</a>
+                    <br>
+                    <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
+                </center>
+            </div>
+            <div class="mdiv-right" style="width:70%;height: 500px;margin-top: 120px; background-color: white">
+                <h1 style="margin-top: 30px;margin-left: 20px;">Hi Juan</h1>
 
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text" style="margin-top: 180px; height:650px;">
-            <div class="container">
-                <div class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            @if ($track == 'ABM')
-                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">ABM</p>
-                                                        <img src="/images/ABM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($track == 'GAS')
-                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">GAS</p>
-                                                        <img src="/images/GAS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if ($track == 'HUMMS')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">HUMMS</p>
-                                                        <img src="/images/HUMMS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($track == 'STEM')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">STEM</p>
-                                                        <img src="/images/STEM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($track == 'TVL')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;margin-top: 20px;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">TVL</p>
-                                                        <img src="/images/TVL.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                        </div>
+                <form action="/profile" method="post" style="margin-top: 30px;margin-left: 20px;" autocomplete="off">
+                    @csrf
+                    <div class="form-group">
+                        <label for="First Name" class="for">First Name</label>
+                        <label for="Middle Name" class="for" style="margin-left: 150px;">Middle Name</label>
+                        <label for="Last Name" class="for" style="margin-left: 150px;">Last Name</label>
+                        <br>
+                        <input required type="text" name="firstname" id="" class="form-group"
+                            value="{{ $user['firstname'] }}">
+                        <input required type="text" name="middlename" id="" class="form-group"
+                            style="margin-left: 39px;" value="{{ $user['middlename'] }}">
+                        <input required type="text" name="lastname" id="" class="form-group"
+                            style="margin-left: 55px;" value="{{ $user['lastname'] }}">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label required for="Email" class="for">Email</label>
+                        <br>
+                        <input required type="email" name="email" id="" value="{{ $user['email'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="for">Password</label>
+                        <label for="repassword" class="for" style="margin-left: 160px;">Confirm Password</label>
+                        <br>
+                        <input disabled readonly type="password" name="password" id="password"
+                            value="{{ $user['password'] }}" style="cursor: no-drop;">
+                        <input required type="password" name="repassword" id="repassword"
+                            style="margin-left: 39px;">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="uid" value="{{ $user['userID'] }}">
+                        <button type="submit" class="btn btn-primary" style="background-color: #f55858"
+                            name="btnUpdate" value="true">Update Profile</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
 
 
+
+
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf; height:100%;">
         <div class="container">
             <div class="row">
                 <center>
@@ -201,19 +148,34 @@
             </div>
         </div>
     </footer>
-    @if (session()->pull('successLogin'))
+    @if (session()->pull('successUpdate'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Login',
+                    title: 'Successfully Updated Profile',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('successLogin') }}
+        {{ session()->forget('successUpdate') }}
+    @endif
+
+    @if (session()->pull('errorUpdate'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Update Profile',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorUpdate') }}
     @endif
 
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
@@ -290,6 +252,22 @@
 
     <!-- Global Init -->
     <script src="js/custom.js"></script>
+    <script>
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("repassword");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+
 
 </body>
 

@@ -14,6 +14,7 @@ class EUsers extends Model
 
 
     protected $fillable = [
+        'userID',
         'username',
         'password',
         'userType',
