@@ -2,29 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EUsers;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-class HomeController extends Controller
+class HumssController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
+        if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            $user = session()->pull("users");
-            session()->put('users', $user);
-            return redirect('/strands', ['user' => $user[0]['username']]);
+            return view('strandabm', ['track' => $user[0]['track'], 'user' => $user[0]['username']]);
         } else {
-            return view('welcome');
+            return redirect("/");
         }
     }
 

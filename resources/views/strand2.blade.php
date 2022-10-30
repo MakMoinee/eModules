@@ -47,9 +47,9 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic Strands</a>
+                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
+                                    Strands</a>
                             </li>
                             <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
@@ -65,117 +65,177 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+    <section class="section" id="about" style="background: #ff589e;">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                    style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
+                        <a href="/strands"
+                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline"
+                                style="margin-top: 20px;color:#f55858 !important;">Dashboard</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                            id="menu">
+                            <li class="nav-item">
+                                <a href="/announcements" class="nav-link align-middle px-0" style="color:whitesmoke">
+                                    <i class="fs-4 bi-house"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Announcements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/notifications" class="nav-link px-0 align-middle" style="color:whitesmoke">
+                                    <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Notifications</span></a>
+                            </li>
+                            <li>
+                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                    style="color:whitesmoke">
+                                    <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Chat</span></a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="dropdown pb-4">
+                            <a href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
+                                    class="rounded-circle">
+                                <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                <li><a class="dropdown-item" href="#">New project...</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col py-3">
+                    <div class="header-text">
+                        <div class="container">
+                            <div class="row">
+                                <div class="container-fluid py-4">
+                                    <div class="row">
+                                        @if ($track == 'ABM')
+                                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;"
+                                                id="abm">
+                                                <a href="/abm">
+                                                    <div class="card">
+                                                        <div class="card-body p-3">
+                                                            <div class="row">
+                                                                <div class="col-8">
+                                                                    <div class="numbers">
+                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                            style="color:black;"> ABM</p>
+                                                                        <img src="/images/ABM.png" alt=""
+                                                                            srcset="" width="150px"
+                                                                            height="150px">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
 
+                                            </div>
+                                        @endif
 
-    <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
-
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text" style="margin-top: 180px; height:650px;">
-            <div class="container">
-                <div class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            @if ($track == 'ABM')
-                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">ABM</p>
-                                                        <img src="/images/ABM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
+                                        @if ($track == 'GAS')
+                                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
+                                                <div class="card">
+                                                    <div class="card-body p-3">
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <div class="numbers">
+                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                        style="color:black;">GAS</p>
+                                                                    <img src="/images/GAS.png" alt=""
+                                                                        srcset="" width="150px" height="150px">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
+                                        @endif
 
-                            @if ($track == 'GAS')
-                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">GAS</p>
-                                                        <img src="/images/GAS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
+                                        @if ($track == 'HUMSS')
+                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
+                                                <a href="/humss">
+                                                    <div class="card">
+                                                        <div class="card-body p-3">
+                                                            <div class="row">
+                                                                <div class="col-8">
+                                                                    <div class="numbers">
+                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                            style="color:black;">HUMSS</p>
+                                                                        <img src="/images/HUMMS.png" alt=""
+                                                                            srcset="" width="150px"
+                                                                            height="150px">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endif
+                                        @if ($track == 'STEM')
+                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
+                                                <div class="card">
+                                                    <div class="card-body p-3">
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <div class="numbers">
+                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                        style="color:black;">STEM</p>
+                                                                    <img src="/images/STEM.png" alt=""
+                                                                        srcset="" width="150px" height="150px">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
+                                        @endif
+                                        @if ($track == 'TVL')
+                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4"
+                                                style="cursor: pointer;margin-top: 20px;">
+                                                <div class="card">
+                                                    <div class="card-body p-3">
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <div class="numbers">
+                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                        style="color:black;">TVL</p>
+                                                                    <img src="/images/TVL.png" alt=""
+                                                                        srcset="" width="150px" height="150px">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
 
-                            @if ($track == 'HUMMS')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">HUMMS</p>
-                                                        <img src="/images/HUMMS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                            @endif
-                            @if ($track == 'STEM')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">STEM</p>
-                                                        <img src="/images/STEM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if ($track == 'TVL')
-                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;margin-top: 20px;">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">TVL</p>
-                                                        <img src="/images/TVL.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ***** Header Text End ***** -->
-    </div>
+    </section>
+
+
     <!-- ***** Welcome Area End ***** -->
 
 

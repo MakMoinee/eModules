@@ -8,18 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Template Mo">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-        rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Academic Strands</title>
+    <title>E Modules</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -51,10 +49,11 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section "><a style="color:#f55858 !important; " href="#services">Academic Strands</a></li>
-                            <li class="scroll-to-section"><a href="#login" data-toggle="modal"
-                                    data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup">Signup</a></li>
+                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic Strands</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
+                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#logOutModal">Sign Out</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -71,92 +70,106 @@
     <!-- ***** Welcome Area Start ***** -->
     <div class="welcome-area" id="welcome">
 
+        
         <!-- ***** Header Text Start ***** -->
         <div class="header-text" style="margin-top: 180px; height:650px;">
             <div class="container">
                 <div class="row">
                     <div class="container-fluid py-4">
                         <div class="row">
-                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                        style="color:black;">ABM</p>
-                                                    <img src="/images/ABM.png" alt="" srcset=""
-                                                        width="150px" height="150px">
+                            @if ($track == 'ABM')
+                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                            style="color:black;">ABM</p>
+                                                        <img src="/images/ABM.png" alt="" srcset=""
+                                                            width="150px" height="150px">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                        style="color:black;">GAS</p>
-                                                    <img src="/images/GAS.png" alt="" srcset=""
-                                                        width="150px" height="150px">
+                            @endif
+
+                            @if ($track == 'GAS')
+                                <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                            style="color:black;">GAS</p>
+                                                        <img src="/images/GAS.png" alt="" srcset=""
+                                                            width="150px" height="150px">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                        style="color:black;">HUMSS</p>
-                                                    <img src="/images/HUMMS.png" alt="" srcset=""
-                                                        width="150px" height="150px">
+                            @endif
+
+                            @if ($track == 'HUMSS')
+                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                            style="color:black;">HUMSS</p>
+                                                        <img src="/images/HUMMS.png" alt="" srcset=""
+                                                            width="150px" height="150px">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                        style="color:black;">STEM</p>
-                                                    <img src="/images/STEM.png" alt="" srcset=""
-                                                        width="150px" height="150px">
+                            @endif
+                            @if ($track == 'STEM')
+                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                            style="color:black;">STEM</p>
+                                                        <img src="/images/STEM.png" alt="" srcset=""
+                                                            width="150px" height="150px">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;margin-top: 20px;">
-                                <div class="card">
-                                    <div class="card-body p-3">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                        style="color:black;">TVL</p>
-                                                    <img src="/images/TVL.png" alt="" srcset=""
-                                                        width="150px" height="150px">
+                            @endif
+                            @if ($track == 'TVL')
+                                <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;margin-top: 20px;">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                            style="color:black;">TVL</p>
+                                                        <img src="/images/TVL.png" alt="" srcset=""
+                                                            width="150px" height="150px">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -165,7 +178,6 @@
         <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
-
 
 
     <!-- ***** Footer Start ***** -->
@@ -190,6 +202,38 @@
             </div>
         </div>
     </footer>
+    @if (session()->pull('successLogin'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Login',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successLogin') }}
+    @endif
+
+    <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/logout" method="GET">
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="logOutModalLabel">Do you want to proceed logging out ?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Yes, Proceed</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

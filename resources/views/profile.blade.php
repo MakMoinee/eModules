@@ -47,7 +47,6 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="/about">About</a></li>
                             <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="/profile" style="color:#f55858 !important;">My
@@ -82,7 +81,7 @@
                 </center>
             </div>
             <div class="mdiv-right" style="width:70%;height: 500px;margin-top: 120px; background-color: white">
-                <h1 style="margin-top: 30px;margin-left: 20px;">Hi Juan</h1>
+                <h1 style="margin-top: 30px;margin-left: 20px;">Hi {{ $user['firstname'] }}</h1>
 
                 <form action="/profile" method="post" style="margin-top: 30px;margin-left: 20px;" autocomplete="off">
                     @csrf

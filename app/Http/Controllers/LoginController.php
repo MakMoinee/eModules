@@ -18,9 +18,7 @@ class LoginController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            $tempUsers = EUsers::all();
-            $count = count($tempUsers);
-            return view('main', ['users' => $user, 'totalUsers' => $count]);
+            return redirect('/strands');
         } else {
             return redirect("/");
         }
@@ -68,7 +66,8 @@ class LoginController extends Controller
             } else {
                 session()->put('users', $user);
                 session()->put('successLogin', true);
-                return view('main', ['users' => $user, 'totalUsers' => $count]);
+
+                return redirect('/strands');
             }
         } else {
             return view('welcome');

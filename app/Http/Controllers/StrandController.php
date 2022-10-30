@@ -16,7 +16,7 @@ class StrandController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            return view('strand2', ['track' => $user[0]['track']]);
+            return view('strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username']]);
         } else {
             return view('strand');
         }
