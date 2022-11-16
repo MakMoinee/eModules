@@ -4,30 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\EUsers;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
+        if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 1) {
-                return redirect('/admin');
-            } else {
-                return redirect('/strands', ['user' => $user[0]['username']]);
-            }
-            
+            $nem = $user[0]['username'];
+            $nUsers = EUsers::all();
+            $total = count($nUsers);
+            $newUsers = DB::table('vwtotalnewusers')->first();
+            $totalNewUsers = $newUsers->TotalNewUsers;
+            return view('admin', ['nem' => $nem, 'totalNewUsers' => $totalNewUsers, 'totalUsers' => $total]);
         } else {
-            return view('welcome');
+            return redirect("/");
         }
     }
 

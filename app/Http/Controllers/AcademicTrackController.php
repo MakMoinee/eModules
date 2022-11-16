@@ -2,33 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EUsers;
+use App\Models\AcademicTrack;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-class HomeController extends Controller
+class AcademicTrackController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $has = $request->session()->has('users');
-        if ($has) {
-            $user = session()->pull("users");
-            session()->put('users', $user);
-            if ($user[0]['userType'] == 1) {
-                return redirect('/admin');
-            } else {
-                return redirect('/strands', ['user' => $user[0]['username']]);
-            }
-            
-        } else {
-            return view('welcome');
-        }
     }
 
     /**
@@ -55,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AcademicTrack  $academicTrack
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AcademicTrack $academicTrack)
     {
         //
     }
@@ -66,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AcademicTrack  $academicTrack
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AcademicTrack $academicTrack)
     {
         //
     }
@@ -78,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\AcademicTrack  $academicTrack
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, AcademicTrack $academicTrack)
     {
         //
     }
@@ -89,10 +75,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\AcademicTrack  $academicTrack
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AcademicTrack $academicTrack)
     {
         //
     }

@@ -11,13 +11,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>E Modules</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +33,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky" style="background: #ff589e;color:bisque;">
         <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -47,11 +46,8 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
-                                    Strands</a>
+                            <li class="scroll-to-section"><a href="/" style="color:#f55858 !important;">Home</a>
                             </li>
-                            <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
                                     data-target="#logOutModal">Sign Out</a></li>
                         </ul>
@@ -65,13 +61,17 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    <section class="section" id="about" style="background: #ff589e;">
+
+
+    <!-- ***** Welcome Area Start ***** -->
+
+    <section class="section" id="about">
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
                     style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
-                        <a href="/strands"
+                        <a href="/"
                             class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline"
                                 style="margin-top: 20px;color:#f55858 !important;">Dashboard</span>
@@ -85,9 +85,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/notifications" class="nav-link px-0 align-middle" style="color:whitesmoke">
+                                <a href="/adminstrands" class="nav-link px-0 align-middle" style="color:whitesmoke">
                                     <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Notifications</span></a>
+                                        class="ms-1 d-none d-sm-inline">Academic Strands</span></a>
                             </li>
                             <li>
                                 <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
@@ -98,133 +98,49 @@
                         </ul>
                         <hr>
                         <div class="dropdown pb-4">
-                            <a href="#"
-                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
+                                <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
+                                <span class="d-none d-sm-inline mx-1">{{ $nem }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col py-3">
-                    <div class="header-text">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container-fluid py-4">
-                                    <div class="row">
-                                        @if ($track == 'ABM')
-                                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;"
-                                                id="abm">
-                                                <a href="/abm?category=CORE">
-                                                    <div class="card">
-                                                        <div class="card-body p-3">
-                                                            <div class="row">
-                                                                <div class="col-8">
-                                                                    <div class="numbers">
-                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                            style="color:black;"> ABM</p>
-                                                                        <img src="/images/ABM.png" alt=""
-                                                                            srcset="" width="150px"
-                                                                            height="150px">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-                                            </div>
-                                        @endif
-
-                                        @if ($track == 'GAS')
-                                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">GAS</p>
-                                                                    <img src="/images/GAS.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                    <div class="container-fluid py-4">
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="numbers">
+                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total
+                                                        Users</p>
+                                                    <h5 class="font-weight-bolder mb-0">
+                                                        {{ $totalUsers }}
+                                                    </h5>
                                                 </div>
                                             </div>
-                                        @endif
-
-                                        @if ($track == 'HUMSS')
-                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <a href="/humss">
-                                                    <div class="card">
-                                                        <div class="card-body p-3">
-                                                            <div class="row">
-                                                                <div class="col-8">
-                                                                    <div class="numbers">
-                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                            style="color:black;">HUMSS</p>
-                                                                        <img src="/images/HUMMS.png" alt=""
-                                                                            srcset="" width="150px"
-                                                                            height="150px">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        @endif
-                                        @if ($track == 'STEM')
-                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">STEM</p>
-                                                                    <img src="/images/STEM.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <div class="card">
+                                    <div class="card-body p-3">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="numbers">
+                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New
+                                                        Users</p>
+                                                    <h5 class="font-weight-bolder mb-0">
+                                                        {{ $totalNewUsers }}
+                                                    </h5>
                                                 </div>
                                             </div>
-                                        @endif
-                                        @if ($track == 'TVL')
-                                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4"
-                                                style="cursor: pointer;margin-top: 20px;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">TVL</p>
-                                                                    <img src="/images/TVL.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -234,13 +150,12 @@
             </div>
         </div>
     </section>
-
-
     <!-- ***** Welcome Area End ***** -->
 
 
+
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf;margin-top: 20px;">
         <div class="container">
             <div class="row">
                 <center>
@@ -272,7 +187,7 @@
                     timer: 1300
                 });
             }, 1500);
-        </script>
+        </script>;
         {{ session()->forget('successLogin') }}
     @endif
 

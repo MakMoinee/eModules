@@ -21,7 +21,11 @@ class ProfileController extends Controller
         if ($has) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            return view('profile', ['user' => $user[0]]);
+            if ($user[0]['userType'] == 1) {
+                return redirect("/");
+            } else {
+                return view('profile', ['user' => $user[0]]);
+            }
         } else {
             return redirect("/");
         }
@@ -49,7 +53,7 @@ class ProfileController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-          
+
 
 
             $affectedRow = DB::table('e_users')

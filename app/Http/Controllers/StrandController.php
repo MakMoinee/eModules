@@ -16,6 +16,9 @@ class StrandController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
+            if ($user[0]['userType'] == 1) {
+                return redirect('/admin');
+            }
             return view('strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username']]);
         } else {
             return view('strand');

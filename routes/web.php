@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ABMController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminStrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -28,4 +30,5 @@ Route::resource('/login', LoginController::class);
 Route::resource('/signup', SignUpController::class);
 Route::resource('/strands', StrandController::class);
 Route::resource('/profile', ProfileController::class);
-
+Route::resource('/admin', AdminController::class);
+Route::resource('/adminstrands', AdminStrandController::class);

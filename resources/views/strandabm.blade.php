@@ -99,20 +99,11 @@
                         <div class="dropdown pb-4">
                             <a href="#"
                                 class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="dropdownUser1" aria-expanded="false">
                                 <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
                                 <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -123,21 +114,49 @@
                                 @if ($track == 'ABM')
                                     <center>
                                         <h4 style="margin-left: 220px;">ACCOUNTANCY, BUSINESS AND MANAGEMENT</h4>
+                                        <br>
                                         <nav class="navbar navbar-expand-lg navbar-light bg-light"
                                             style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
                                             <div class="collapse navbar-collapse" id="navbarNav">
                                                 <ul class="navbar-nav">
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link" href="#">CORE <span
-                                                                class="sr-only">(current)</span></a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">APPLIED</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#">SPECIALIZED ABM</a>
-                                                    </li>
+                                                    @if ($category == 'CORE')
+                                                        <li class="nav-item active">
+                                                            <a class="nav-link" href="/abm?category=CORE"><b>CORE</b>
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li class="nav-item ">
+                                                            <a class="nav-link" href="/abm?category=CORE">CORE
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    @if ($category == 'APPLIED')
+                                                        <li class="nav-item active">
+                                                            <a class="nav-link" href="/abm?category=APPLIED"><b>APPLIED</b>
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li class="nav-item ">
+                                                            <a class="nav-link" href="/abm?category=APPLIED">APPLIED
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    @if ($category == 'SPECIALIZED')
+                                                        <li class="nav-item active">
+                                                            <a class="nav-link"
+                                                                href="/abm?category=SPECIALIZED"><b>SPECIALIZED ABM</b>
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li class="nav-item ">
+                                                            <a class="nav-link"
+                                                                href="/abm?category=SPECIALIZED">SPECIALIZED ABM
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 </ul>
+
+
                                             </div>
                                         </nav>
                                     </center>
@@ -165,6 +184,52 @@
                                         </nav>
                                     </center>
                                 @endif
+                            </div>
+                            <br>
+                            <div class="row table-responsive-md" style="background: whitesmoke;">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <th>
+                                            Subject
+                                        </th>
+                                        <th>
+                                            No. of Hours
+                                        </th>
+                                        <th>
+                                            Pre-requisite
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            E-Modules
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($trackRes as $tr)
+                                            <tr>
+                                                <td>{{ $tr['description'] }}</td>
+
+                                                <td>
+                                                    {{ $tr['hours'] }}
+                                                </td>
+                                                <td>
+                                                    {{ $tr['prerequisite'] }}
+                                                </td>
+                                                <td>
+                                                    {{ $tr['status'] }}
+                                                </td>
+                                                <td>
+                                                    <a href="#" style="text-decoration: none;"
+                                                        title="{{ $tr['description'] }}"><img
+                                                            src="/storage/images/continue.png" alt=""
+                                                            srcset="" width="24px" height="24px"
+                                                            title="{{ $tr['description'] }}"></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

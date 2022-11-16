@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ABMController extends Controller
 {
@@ -11,13 +12,23 @@ class ABMController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        if (session()->exists("users")) {
+        if (session()->exists("users") && $request['category']) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            return view('strandabm', ['track' => $user[0]['track'], 'user' => $user[0]['username']]);
+            $data = DB::table('academic_strands')->where(['description' => $user[0]['track']])->get();
+            $strandID  = $data[0]->strandID;
+
+
+            $queryResult = DB::table('academic_tracks')
+                ->where(['strandID' => $strandID, 'category' => $request['category']])
+                ->get();
+
+            $trackRes = json_decode($queryResult, true);
+
+            return view('strandabm', ['track' => $user[0]['track'], 'user' => $user[0]['username'], 'trackRes' => $trackRes, 'category' => $request['category']]);
         } else {
             return redirect("/");
         }

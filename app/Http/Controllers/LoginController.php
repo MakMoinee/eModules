@@ -46,6 +46,7 @@ class LoginController extends Controller
         $pw = $request->password;
 
         if ($un && $pw) {
+
             $queryResult = EUsers::where([['username', '=', $un]])->get();
             $users =  json_decode($queryResult, true);
             $user = [];
@@ -67,6 +68,9 @@ class LoginController extends Controller
                 session()->put('users', $user);
                 session()->put('successLogin', true);
 
+                if ($user[0]['userType'] == 1) {
+                    return redirect("/admin");
+                }
                 return redirect('/strands');
             }
         } else {
