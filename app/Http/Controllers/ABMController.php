@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModuleHelper;
+use App\Models\Modules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Collection\Set;
 
 class ABMController extends Controller
 {
@@ -27,8 +30,43 @@ class ABMController extends Controller
                 ->get();
 
             $trackRes = json_decode($queryResult, true);
+            $availableEMod = array();
+            $moduleHelper = array();
+            foreach ($trackRes as $tr) {
+                $queryResult2 = DB::table('modules')
+                    ->where(['trackID' => $tr['trackID']])
+                    ->get();
+                $tmpMod = new ModuleHelper();
+                $tmpMod->trackID = $tr['trackID'];
+                if (count($queryResult2) == 0) {
+                    $tmpMod->isAvailable = false;
+                } else {
+                    $tmpMod->isAvailable = true;
+                    $tmpEmod = json_decode($queryResult2, true);
+                    array_push($availableEMod, $tmpEmod[0]);
+                }
+                array_push($moduleHelper, $tmpMod);
+            }
 
-            return view('strandabm', ['track' => $user[0]['track'], 'user' => $user[0]['username'], 'trackRes' => $trackRes, 'category' => $request['category']]);
+            // dd([
+            //     'track' => $user[0]['track'],
+            //     'user' => $user[0]['username'],
+            //     'trackRes' => $trackRes,
+            //     'category' => $request['category'],
+            //     'moduleHelper' => $moduleHelper,
+            //     'emodules' => $availableEMod,
+            //     'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
+            // ]);
+
+            return view('strandabm', [
+                'track' => $user[0]['track'],
+                'user' => $user[0]['username'],
+                'trackRes' => $trackRes,
+                'category' => $request['category'],
+                'moduleHelper' => $moduleHelper,
+                'emodules' => $availableEMod,
+                'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
+            ]);
         } else {
             return redirect("/");
         }

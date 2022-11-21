@@ -100,7 +100,7 @@
                         <div class="dropdown pb-4">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"
+                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
                                 <span class="d-none d-sm-inline mx-1">{{ $nem }}</span>
                             </a>

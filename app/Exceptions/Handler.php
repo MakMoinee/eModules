@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Models\AcademicStrands;
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\PostTooLargeException;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +41,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+
+        if ($exception instanceof PostTooLargeException) {
+
+            $idStr = $request->getQueryString("id");
+            $idSlice = explode("=", $idStr, strlen($idStr));
+            $id = $idSlice[1];
+            return redirect(route('modules.show', ['module' => $id]) . "?err=1");
+        }
+        return parent::render($request, $exception);
     }
 }

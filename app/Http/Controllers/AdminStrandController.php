@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AcademicStrands;
 use App\Models\AcademicTrack;
 use App\Models\EUsers;
+use App\Models\ModuleHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +21,9 @@ class AdminStrandController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
+            if ($user[0]['userType'] != 1) {
+                return redirect('/');
+            }
             $nem = $user[0]['username'];
             $nUsers = EUsers::all();
             $total = count($nUsers);
@@ -35,7 +39,16 @@ class AdminStrandController extends Controller
 
             $strandsAvailable = AcademicStrands::all();
 
-            return view('adminstrands', ['nem' => $nem, 'totalNewUsers' => $totalNewUsers, 'totalUsers' => $total, 'modules' => $modules, 'availableStrands' => $strandsAvailable]);
+            return view(
+                'adminstrands',
+                [
+                    'nem' => $nem,
+                    'totalNewUsers' => $totalNewUsers,
+                    'totalUsers' => $total,
+                    'modules' => $modules,
+                    'availableStrands' => $strandsAvailable
+                ]
+            );
         } else {
             return redirect("/");
         }

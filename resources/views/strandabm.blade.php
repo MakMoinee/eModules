@@ -97,8 +97,7 @@
                         </ul>
                         <hr>
                         <div class="dropdown pb-4">
-                            <a href="#"
-                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" aria-expanded="false">
                                 <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
@@ -132,7 +131,8 @@
                                                     @endif
                                                     @if ($category == 'APPLIED')
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="/abm?category=APPLIED"><b>APPLIED</b>
+                                                            <a class="nav-link"
+                                                                href="/abm?category=APPLIED"><b>APPLIED</b>
                                                             </a>
                                                         </li>
                                                     @else
@@ -192,24 +192,89 @@
                                         <th>
                                             Subject
                                         </th>
-                                        <th>
-                                            No. of Hours
-                                        </th>
-                                        <th>
-                                            Pre-requisite
-                                        </th>
-                                        <th>
-                                            Status
-                                        </th>
-                                        <th>
-                                            E-Modules
-                                        </th>
                                     </thead>
                                     <tbody>
                                         @foreach ($trackRes as $tr)
                                             <tr>
-                                                <td>{{ $tr['description'] }}</td>
+                                                <td>{{ $tr['description'] }}
+                                                    <button style="float: right;" class="btn btn-btn-primary"
+                                                        data-toggle="modal"
+                                                        data-target="#viewModal{{ $tr['trackID'] }}">...</button>
+                                                    <div class="modal fade" id="viewModal{{ $tr['trackID'] }}"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="viewModalLabel{{ $tr['trackID'] }}"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <center>
+                                                                        <h5 class="modal-title"
+                                                                            id="viewModalLabel{{ $tr['trackID'] }}">
+                                                                            {{ $tr['description'] }}
+                                                                        </h5>
+                                                                    </center>
+                                                                </div>
+                                                                <form action="#" method="GET">
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <label for="No. Of Hours"
+                                                                                class="for">No. Of Hours:</label>
+                                                                            <br>
+                                                                            <input required type="number"
+                                                                                name="hours" id=""
+                                                                                value="{{ $tr['hours'] }}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="prerequisite"
+                                                                                class="for">Pre-requisite:</label>
+                                                                            <br>
+                                                                            <input type="text" name="prerequisite"
+                                                                                id=""
+                                                                                value="{{ $tr['prerequisite'] }}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="emodules" class="for">E
+                                                                                Modules:</label>
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    @foreach ($moduleHelper as $mh)
+                                                                                        @if ($mh['trackID'] == $tr['trackID'])
+                                                                                            @if ($mh['isAvailable'])
+                                                                                                @foreach ($emodules as $em)
+                                                                                                    <ul>
+                                                                                                        @if ($em['trackID'] == $mh['trackID'])
+                                                                                                            <li><a href="/storage/emodules/{{ $em['filePath'] }}"
+                                                                                                                    target="_blank">{{ $em['description'] }}</a>
+                                                                                                            </li>
+                                                                                                        @endif
+                                                                                                    </ul>
+                                                                                                @endforeach
+                                                                                            @else
+                                                                                                There are no available e
+                                                                                                modules.
+                                                                                            @endif
+                                                                                        @endif
+                                                                                    @endforeach
 
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        {{-- <button type="submit"
+                                                                            class="btn btn-primary">Yes,
+                                                                            Proceed</button> --}}
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                {{-- 
                                                 <td>
                                                     {{ $tr['hours'] }}
                                                 </td>
@@ -218,14 +283,7 @@
                                                 </td>
                                                 <td>
                                                     {{ $tr['status'] }}
-                                                </td>
-                                                <td>
-                                                    <a href="#" style="text-decoration: none;"
-                                                        title="{{ $tr['description'] }}"><img
-                                                            src="/storage/images/continue.png" alt=""
-                                                            srcset="" width="24px" height="24px"
-                                                            title="{{ $tr['description'] }}"></a>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>

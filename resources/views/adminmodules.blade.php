@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -111,207 +111,102 @@
                     <!-- Content Here --->
                     <div class="container">
                         <div class="row">
+                            <h2>{{ $title }}</h2>
+                        </div>
+                        <br>
+                        <div class="row">
+                            @foreach ($tracks as $tra)
+                                {{-- <h3>{{ $tra['description'] }}</h3> --}}
+                            @endforeach
+                            <a href="/adminstrands" class="btn btn-success" style="margin-right: 10px;">Go Back</a>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addModuleModal">Add
-                                Module</button>
+                                E-Module</button>
                         </div>
                         <br>
                         <div class="row" style="background: whitesmoke;" class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <th>
-                                        Subject
+                                        E Module ID
                                     </th>
                                     <th>
-                                        Strand
-                                    </th>
-                                    <th>
-                                        Category
+                                        E Module Description
                                     </th>
                                     <th>
                                         Sequence
                                     </th>
                                     <th>
-                                        No. of Hours
-                                    </th>
-                                    <th>
-                                        Pre-requisite
-                                    </th>
-                                    <th>
-                                        Status
-                                    </th>
-                                    <th>
-                                        E-Modules
+                                        E Module File
                                     </th>
                                     <th>
                                         Action
                                     </th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($modules as $mod)
+                                    @foreach ($emodules as $e)
                                         <tr>
                                             <td>
-                                                {{ $mod['SubjectName'] }}
+                                                {{ $e['moduleID'] }}
                                             </td>
                                             <td>
-                                                {{ $mod['Strand'] }}
+                                                {{ $e['description'] }}
                                             </td>
                                             <td>
-                                                {{ $mod['category'] }}
+                                                {{ $e['sequence'] }}
                                             </td>
                                             <td>
-                                                {{ $mod['sequence'] }}
+                                                {{ $e['filePath'] }}
                                             </td>
                                             <td>
-                                                {{ $mod['hours'] }}
-                                            </td>
-                                            <td>
-                                                {{ $mod['prerequisite'] }}
-                                            </td>
-                                            <td>
-                                                {{ $mod['status'] }}
-                                            </td>
-                                            <td>
-                                                <form
-                                                    action="{{ route('modules.show', ['module' => $mod['trackID']]) }}"
-                                                    method="POST">
-                                                    @method('get')
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <input type="hidden" name="title"
-                                                            value="{{ $mod['SubjectName'] }}">
-                                                        <button type="submit" class="btn btn-success fs-6"
-                                                            style="font-size: 12px;width: 80px;">View Modules</button>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-success fs-6"
-                                                    style="font-size: 12px;width: 80px;" data-toggle="modal"
-                                                    data-target="#viewModuleModal{{ $mod['trackID'] }}">View/Edit</button>
-                                                <div class="modal fade " id="viewModuleModal{{ $mod['trackID'] }}"
+                                                <button class="btn btn-success" data-toggle="modal"
+                                                    data-target="#viewModuleModal{{ $e['moduleID'] }}">View/Edit</button>
+                                                <div class="modal fade " id="viewModuleModal{{ $e['moduleID'] }}"
                                                     tabindex="-1" role="dialog"
-                                                    aria-labelledby="viewModuleModalLabel{{ $mod['trackID'] }}"
+                                                    aria-labelledby="viewModuleModalLabel{{ $e['moduleID'] }}"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title"
-                                                                    id="viewModuleModalLabel{{ $mod['trackID'] }}">
+                                                                    id="viewModuleModalLabel{{ $e['moduleID'] }}">
                                                                     View/Edit
-                                                                    Module</h5>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                                    E-Module</h5>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row">
-                                                                    <form action="/adminstrands" method="POST"
-                                                                        enctype="multipart/form-data"
+                                                                    <form
+                                                                        action="{{ route('modules.update', ['module' => $e['moduleID']]) }}"
+                                                                        method="POST" enctype="multipart/form-data"
                                                                         autocomplete="off">
+                                                                        @method('put')
                                                                         @csrf
                                                                         <div class="form-group">
                                                                             <input required type="text"
                                                                                 style="width:350px;margin-left: 35px;"
                                                                                 name="description" id="un"
-                                                                                placeholder="Subject Description"
-                                                                                value="{{ $mod['SubjectName'] }}">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <select readonly name="strand"
-                                                                                id="strand"
-                                                                                style="width:150px;margin-left: 35px;">
-                                                                                @foreach ($availableStrands as $as)
-                                                                                    @if ($as['description'] == $mod['Strand'])
-                                                                                        <option
-                                                                                            value={{ $as['strandID'] }}
-                                                                                            selected>
-                                                                                            {{ $as['description'] }}
-                                                                                        </option>
-                                                                                    @else
-                                                                                        <option
-                                                                                            value={{ $as['strandID'] }}
-                                                                                            disabled>
-                                                                                            {{ $as['description'] }}
-                                                                                        </option>
-                                                                                    @endif
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <select name="category" id="category"
-                                                                                style="width:150px;margin-left: 35px;">
-                                                                                @if ($mod['category'] == 'CORE')
-                                                                                    <option value="CORE" selected>
-                                                                                        CORE
-                                                                                    </option>
-                                                                                    <option value="APPLIED" disabled>
-                                                                                        APPLIED
-                                                                                    </option>
-                                                                                    <option value="SPECIALIZED"
-                                                                                        disabled>
-                                                                                        SPECIALIZED
-                                                                                    </option>
-                                                                                @endif
-
-                                                                                @if ($mod['category'] == 'APPLIED')
-                                                                                    <option value="CORE" disabled>
-                                                                                        CORE
-                                                                                    </option>
-                                                                                    <option value="APPLIED" selected>
-                                                                                        APPLIED
-                                                                                    </option>
-                                                                                    <option value="SPECIALIZED"
-                                                                                        disabled>
-                                                                                        SPECIALIZED
-                                                                                    </option>
-                                                                                @endif
-
-                                                                                @if ($mod['category'] == 'SPECIALIZED')
-                                                                                    <option value="CORE" disabled>
-                                                                                        CORE
-                                                                                    </option>
-                                                                                    <option value="APPLIED" disabled>
-                                                                                        APPLIED
-                                                                                    </option>
-                                                                                    <option value="SPECIALIZED"
-                                                                                        selected>
-                                                                                        SPECIALIZED
-                                                                                    </option>
-                                                                                @endif
-
-                                                                            </select>
+                                                                                placeholder="E Module Description"
+                                                                                value="{{ $e['description'] }}">
                                                                         </div>
                                                                         <div class="form-group"
                                                                             style="margin-left: 35px;">
-                                                                            <input readonly type="number"
-                                                                                style="cursor: not-allowed;"
+                                                                            <input required type="number"
                                                                                 name="sequence" id=""
                                                                                 placeholder="Sequence Number"
-                                                                                value="{{ $mod['sequence'] }}">
-                                                                        </div>
-                                                                        <div class="form-group"
-                                                                            style="margin-left: 35px;">
-                                                                            <input type="number" name="hours"
-                                                                                id=""
-                                                                                placeholder="No. Of Hours"
-                                                                                value="{{ $mod['hours'] }}">
-                                                                            <input type="text" name="prerequisite"
-                                                                                id=""
-                                                                                placeholder="Pre-requisite"
-                                                                                value="{{ $mod['prerequisite'] }}">
+                                                                                value="{{ $e['sequence'] }}">
                                                                         </div>
                                                                         <div class="form-group"
                                                                             style="margin-left: 35px">
                                                                             <label for="emodule" class="emodule"><b>E
                                                                                     Module Docs</b></label>
                                                                             <br>
-                                                                            <input type="file" name="file"
-                                                                                id="">
+                                                                            <input type="file" name="files"
+                                                                                id="" accept=".pdf">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <input type="hidden" name="trackID"
-                                                                                value="{{ $mod['trackID'] }}">
+                                                                            <input type="hidden" name="tid"
+                                                                                value="{{ $id }}">
+                                                                            <input type="hidden" name="formType"
+                                                                                value="upload">
                                                                         </div>
 
                                                                 </div>
@@ -321,40 +216,35 @@
                                                                     data-dismiss="modal">Close</button>
                                                                 <button type="submit" class="btn btn-primary"
                                                                     style="background-color: #ff589e" name="btnUpdate"
-                                                                    value="true">Update
-                                                                    Module</button>
+                                                                    value="{{ $e['moduleID'] }}">Update
+                                                                    E-Module</button>
                                                             </div>
                                                             </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-danger fs-6"
-                                                    style="font-size: 12px;width: 80px;"data-toggle="modal"
-                                                    data-target="#deleteModal{{ $mod['trackID'] }}">Delete</button>
-                                                <div class="modal fade" id="deleteModal{{ $mod['trackID'] }}"
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#deleteModuleModal{{ $e['moduleID'] }}">Delete</button>
+                                                <div class="modal fade" id="deleteModuleModal{{ $e['moduleID'] }}"
                                                     tabindex="-1" role="dialog"
-                                                    aria-labelledby="deleteModalLabel{{ $mod['trackID'] }}"
-                                                    aria-hidden="true">
+                                                    aria-labelledby="deleteModuleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <form
-                                                                action="{{ route('adminstrands.destroy', ['adminstrand' => $mod['trackID']]) }}"
-                                                                method="POST" enctype="multipart/form-data">
+                                                                action="{{ route('modules.destroy', ['module' => $e['moduleID']]) }}"
+                                                                method="POST">
                                                                 @method('delete')
                                                                 @csrf
-                                                                <div class="form-group">
-                                                                    <input type="hidden" name="trackID"
-                                                                        value="{{ $mod['trackID'] }}">
-                                                                </div>
                                                                 <div class="modal-body">
                                                                     <h5 class="modal-title"
-                                                                        id="deleteModalLabel{{ $mod['trackID'] }}">
-                                                                        Do you want to
-                                                                        proceed Deleting Module ?</h5>
+                                                                        id="deleteModuleModalLabel{{ $e['moduleID'] }}">
+                                                                        Do
+                                                                        you want to delete this e module record ?</h5>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary">Yes,
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                        name="btnDelete"
+                                                                        value="{{ $id }}">Yes,
                                                                         Proceed</button>
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
@@ -437,48 +327,32 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModuleModalLabel">Add Module</h5>
+                    <h5 class="modal-title" id="addModuleModalLabel">Add E-Module</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <form action="/adminstrands" method="POST" enctype="multipart/form-data"
-                            autocomplete="off">
+                        <form action="{{ route('modules.store') }}?id={{ $id }}" method="POST"
+                            enctype="multipart/form-data" autocomplete="off">
                             @csrf
                             <div class="form-group">
                                 <input required type="text" style="width:350px;margin-left: 35px;"
-                                    name="description" id="un" placeholder="Subject Description">
-                            </div>
-                            <div class="form-group">
-                                <select name="strand" id="strand" style="width:150px;margin-left: 35px;">
-                                    @foreach ($availableStrands as $as)
-                                        <option value={{ $as['strandID'] }}>{{ $as['description'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select name="category" id="category" style="width:150px;margin-left: 35px;">
-                                    <option value="CORE" selected>CORE</option>
-                                    <option value="APPLIED">APPLIED</option>
-                                    <option value="SPECIALIZED">SPECIALIZED</option>
-                                    </option>
-                                </select>
+                                    name="description" id="un" placeholder="E Module Description">
                             </div>
                             <div class="form-group" style="margin-left: 35px;">
                                 <input required type="number" name="sequence" id=""
                                     placeholder="Sequence Number">
                             </div>
-                            <div class="form-group" style="margin-left: 35px;">
-                                <input type="number" name="hours" id="" placeholder="No. Of Hours">
-                                <input type="text" name="prerequisite" id=""
-                                    placeholder="Pre-requisite">
-                            </div>
                             <div class="form-group" style="margin-left: 35px">
                                 <label for="emodule" class="emodule"><b>E Module Docs</b></label>
                                 <br>
-                                <input type="file" name="file" id="">
+                                <input required type="file" name="files" id="" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="tid" value="{{ $id }}">
+                                <input type="hidden" name="formType" value="upload">
                             </div>
 
                     </div>
@@ -486,96 +360,109 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" style="background-color: #ff589e" name="btnAdd"
-                        value="true">Add
-                        Module</button>
+                        value="true">Add E-Module</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
-    @if (session()->pull('successUpdatingModule'))
+    @if (session()->pull('successUpdateEModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Updated Module',
+                    title: 'Successfully Updated E Module',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('successUpdatingModule') }}
+        {{ session()->forget('successUpdateEModule') }}
     @endif
-    @if (session()->pull('successDeletingModule'))
+    @if (session()->pull('successDeleteModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Deleted Module',
+                    title: 'Successfully Deleted E Module',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('successDeletingModule') }}
+        {{ session()->forget('successDeleteModule') }}
     @endif
-    @if (session()->pull('successAddingModule'))
+    @if (session()->pull('successAddEModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Added Module',
+                    title: 'Successfully Added E Module',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('successAddingModule') }}
+        {{ session()->forget('successAddEModule') }}
     @endif
-    @if (session()->pull('errorDeletingModule'))
+    @if (session()->pull('errorDeleteModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to delete module, Please Try Again!',
+                    title: 'Failed to delete e module, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('errorDeletingModule') }}
+        {{ session()->forget('errorDeleteModule') }}
     @endif
-    @if (session()->pull('errorUpdatingModule'))
+    @if (session()->pull('errorUpdateEModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to update module, Please Try Again!',
+                    title: 'Failed to update e module, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('errorUpdatingModule') }}
+        {{ session()->forget('errorUpdateEModule') }}
     @endif
-    @if (session()->pull('errorAddingModule'))
+    @if (session()->pull('errorAddEModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to add module, Please Try Again!',
+                    title: 'Failed to add e module, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
             }, 1500);
         </script>;
-        {{ session()->forget('errorAddingModule') }}
+        {{ session()->forget('errorAddEModule') }}
+    @endif
+    @if (session()->pull('errorFileNotValid'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'File Not Valid, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorFileNotValid') }}
     @endif
     @if (session()->pull('errorExistingSequence'))
         <script>
@@ -593,21 +480,37 @@
     @endif
 
     <!-- jQuery -->
-    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="../js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="js/owl-carousel.js"></script>
-    <script src="js/scrollreveal.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imgfix.min.js"></script>
+    <script src="../js/owl-carousel.js"></script>
+    <script src="../js/scrollreveal.min.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/jquery.counterup.min.js"></script>
+    <script src="../js/imgfix.min.js"></script>
 
     <!-- Global Init -->
-    <script src="js/custom.js"></script>
+    <script src="../js/custom.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const errParam = urlParams.get('err');
+        if (errParam == 1) {
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to add e module, File Too Large',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+                window.history.pushState({}, document.title, window.location.pathname);
+            }, 1500);
+        }
+    </script>
 
 </body>
 
