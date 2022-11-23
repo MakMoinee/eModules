@@ -17,7 +17,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 </head>
 
 <body>
@@ -79,7 +83,7 @@
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item">
-                                <a href="/announcements" class="nav-link align-middle px-0" style="color:whitesmoke">
+                                <a href="/studentannounce" class="nav-link align-middle px-0" style="color:whitesmoke">
                                     <i class="fs-4 bi-house"></i> <span
                                         class="ms-1 d-none d-sm-inline">Announcements</span>
                                 </a>
@@ -99,21 +103,12 @@
                         <hr>
                         <div class="dropdown pb-4">
                             <a href="#"
-                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
                                 <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -126,7 +121,7 @@
                                         @if ($track == 'ABM')
                                             <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;"
                                                 id="abm">
-                                                <a href="/abm?category=CORE">
+                                                <a href="/course?category=CORE">
                                                     <div class="card">
                                                         <div class="card-body p-3">
                                                             <div class="row">
@@ -149,26 +144,30 @@
 
                                         @if ($track == 'GAS')
                                             <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">GAS</p>
-                                                                    <img src="/images/GAS.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
+                                                <a href="/course?category=CORE">
+                                                    <div class="card">
+                                                        <div class="card-body p-3">
+                                                            <div class="row">
+                                                                <div class="col-8">
+                                                                    <div class="numbers">
+                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                            style="color:black;">GAS</p>
+                                                                        <img src="/images/GAS.png" alt=""
+                                                                            srcset="" width="150px"
+                                                                            height="150px">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
+
                                             </div>
                                         @endif
 
                                         @if ($track == 'HUMSS')
                                             <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <a href="/humss">
+                                                <a href="/course?category=CORE">
                                                     <div class="card">
                                                         <div class="card-body p-3">
                                                             <div class="row">
@@ -189,41 +188,50 @@
                                         @endif
                                         @if ($track == 'STEM')
                                             <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">STEM</p>
-                                                                    <img src="/images/STEM.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
+                                                <a href="/course?category=CORE">
+                                                    <div class="card">
+                                                        <div class="card-body p-3">
+                                                            <div class="row">
+                                                                <div class="col-8">
+                                                                    <div class="numbers">
+                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                            style="color:black;">STEM</p>
+                                                                        <img src="/images/STEM.png" alt=""
+                                                                            srcset="" width="150px"
+                                                                            height="150px">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
+
                                             </div>
                                         @endif
                                         @if ($track == 'TVL')
                                             <div class="col-md-3 col-sm-6 mb-xl-0 mb-4"
                                                 style="cursor: pointer;margin-top: 20px;">
-                                                <div class="card">
-                                                    <div class="card-body p-3">
-                                                        <div class="row">
-                                                            <div class="col-8">
-                                                                <div class="numbers">
-                                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                                        style="color:black;">TVL</p>
-                                                                    <img src="/images/TVL.png" alt=""
-                                                                        srcset="" width="150px" height="150px">
+                                                <a href="/course?category=CORE">
+                                                    <div class="card">
+                                                        <div class="card-body p-3">
+                                                            <div class="row">
+                                                                <div class="col-8">
+                                                                    <div class="numbers">
+                                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                                            style="color:black;">TVL</p>
+                                                                        <img src="/images/TVL.png" alt=""
+                                                                            srcset="" width="150px"
+                                                                            height="150px">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
+
                                             </div>
                                         @endif
+
 
                                     </div>
                                 </div>
@@ -350,7 +358,10 @@
 
     <!-- Global Init -->
     <script src="js/custom.js"></script>
-
-</body>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    
+    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+        <script src="js/push.js"></script>
+    </body>
 
 </html>

@@ -140,7 +140,7 @@
                                             <td>{{ $an['description'] }}</td>
                                             <td>{{ $an['card'] }}</td>
                                             <td>
-                                                {{ strlen($an['subtext']) > 60 ? substr($an['subtext'], 0, 60) . '...' : $in }}
+                                                {{ strlen($an['subtext']) > 60 ? substr($an['subtext'], 0, 60) . '...' : $an['subtext'] }}
                                             </td>
                                             <td>
                                                 @if ($an['activated'] == 0)

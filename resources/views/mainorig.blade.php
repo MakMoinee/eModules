@@ -207,6 +207,8 @@
     <!-- Global Init -->
     <script src="js/custom.js"></script>
 
+<script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+    <script src="js/push.js"></script>
 </body>
 
 </html>

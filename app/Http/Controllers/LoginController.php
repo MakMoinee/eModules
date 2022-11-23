@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -56,10 +58,13 @@ class LoginController extends Controller
                 if (password_verify($pw, $u['password'])) {
                     $u['userID'] = $u['userID'];
                     $u['password'] = $pw;
+                    $suser = User::find($u['userID']);
                     array_push($user, $u);
                     break;
                 }
             }
+
+
 
             if (count($user) == 0) {
                 session()->put('errorLogin', true);
@@ -67,7 +72,7 @@ class LoginController extends Controller
             } else {
                 session()->put('users', $user);
                 session()->put('successLogin', true);
-
+                // Auth::login($user, false);
                 if ($user[0]['userType'] == 1) {
                     return redirect("/admin");
                 }

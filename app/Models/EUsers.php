@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class EUsers extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'e_users';
     protected $id = 'userID';
@@ -19,10 +22,12 @@ class EUsers extends Model
         'password',
         'userType',
         "firstname",
-        "middlename" ,
+        "middlename",
         "lastname",
         "lrn",
-        "track" ,
-        "email" ,
+        "track",
+        "email",
     ];
+
+    // '', '', '', '', '', '
 }

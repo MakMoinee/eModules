@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 22/11/2022 02:20:50
+ Date: 23/11/2022 15:53:28
 */
 
 SET NAMES utf8mb4;
@@ -76,12 +76,29 @@ CREATE TABLE `announcements`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`announceID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of announcements
 -- ----------------------------
-INSERT INTO `announcements` VALUES (7, 'New Student\'s Orientation Program', 'New Student\'s Orientation Program1669054101.png', 'NSOP will be held at Ground Floor Eco Park at exactly 3:30 pm on December 1, 2022', 1, '2022-11-21 18:08:21', '2022-11-21 18:08:21');
+INSERT INTO `announcements` VALUES (9, 'New Student Orientation Program', 'New Student Orientation Program1669175114.jpg', 'NSOP', 1, '2022-11-23 03:45:14', '2022-11-23 03:45:14');
+INSERT INTO `announcements` VALUES (10, 'new', 'new1669175868.jpg', 'new', 1, '2022-11-23 03:57:48', '2022-11-23 03:57:48');
+INSERT INTO `announcements` VALUES (11, 'data', 'data1669175886.jpg', 'dast', 1, '2022-11-23 03:58:06', '2022-11-23 03:58:06');
+INSERT INTO `announcements` VALUES (12, 'sss', 'sss1669176344.jpg', 'sss', 1, '2022-11-23 04:05:44', '2022-11-23 04:05:44');
+
+-- ----------------------------
+-- Table structure for device_keys
+-- ----------------------------
+DROP TABLE IF EXISTS `device_keys`;
+CREATE TABLE `device_keys`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `device_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of device_keys
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for e_users
@@ -106,7 +123,7 @@ CREATE TABLE `e_users`  (
 -- ----------------------------
 -- Records of e_users
 -- ----------------------------
-INSERT INTO `e_users` VALUES (1, 'sample', '$2y$10$TKB/Q6F1sUoQxRL.jxeQC.CkFHo9JuOszmLDLTW/7W9QhsRf6t.6m', 'sample', 'sample', 'sample', '123456', 'ABM', 'sample@gmail.com', 2, '2022-11-16 13:55:51', '2022-11-16 13:55:51');
+INSERT INTO `e_users` VALUES (1, 'sample', '$2y$10$TKB/Q6F1sUoQxRL.jxeQC.CkFHo9JuOszmLDLTW/7W9QhsRf6t.6m', 'sample', 'sample', 'sample', '123456', 'STEM', 'sample@gmail.com', 2, '2022-11-16 13:55:51', '2022-11-16 13:55:51');
 INSERT INTO `e_users` VALUES (2, 'admin', '$2a$14$NKT9r6172lWglVqJoKKok.h9YbaI7ouXV4FPboN3DI091UOwQLMRy', 'Admin', 'X', 'Admin', '12345', 'ABM', 'admin@emodules.com', 1, '2022-11-17 00:11:51', '2022-11-17 00:11:54');
 
 -- ----------------------------
@@ -172,6 +189,22 @@ CREATE TABLE `modules`  (
 INSERT INTO `modules` VALUES (7, 9, 1, 'Unit 1', 'Unit 1221121.pdf', '2022-11-21 16:05:27', '2022-11-21 16:05:27');
 
 -- ----------------------------
+-- Table structure for notifs
+-- ----------------------------
+DROP TABLE IF EXISTS `notifs`;
+CREATE TABLE `notifs`  (
+  `notifID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`notifID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of notifs
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for password_resets
 -- ----------------------------
 DROP TABLE IF EXISTS `password_resets`;
@@ -219,12 +252,13 @@ CREATE TABLE `users`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `device_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users

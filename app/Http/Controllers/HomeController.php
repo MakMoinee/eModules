@@ -23,7 +23,7 @@ class HomeController extends Controller
             if ($user[0]['userType'] == 1) {
                 return redirect('/admin');
             } else {
-                return redirect('/strands', ['user' => $user[0]['username']]);
+                return redirect('/strands');
             }
             
         } else {

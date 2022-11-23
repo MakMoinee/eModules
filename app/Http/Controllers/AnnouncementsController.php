@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostAnnouncement;
 use App\Models\AcademicStrands;
 use App\Models\Announcements;
+use App\Models\Notif;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +29,9 @@ class AnnouncementsController extends Controller
             $strandsAvailable = AcademicStrands::all();
             $announce = Announcements::all();
             $announce = count($announce) == 0 ? [] : $announce;
-            return view('adminannounce',[
+            return view(
+                'adminannounce',
+                [
                     'nem' => $nem,
                     'availableStrands' => $strandsAvailable,
                     'announce' => $announce
@@ -148,9 +152,20 @@ class AnnouncementsController extends Controller
                     ]);
                 if ($affectedRows > 0) {
                     session()->put('successUpdateAnnounce', true);
+                    // $announce = DB::table('announcements')->where(['announceID' => $id])->get();
+                    
+                    $announce = Announcements::where(['announceID' => $id])->get();
+                    // dd($announce[0]);
+                    // PostAnnouncement::dispatch($announce[0]);
+                    $notif = new Notif();
+                    $notif->description = $announce[0]->description;
+                    $notif->save();
+
+                    event(new PostAnnouncement($announce[0]));
                 } else {
                     session()->put('errorUpdateAnnounce', true);
                 }
+
                 return redirect('/announcements');
             }
             if ($request->btnDeactivate) {

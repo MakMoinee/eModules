@@ -5,6 +5,7 @@
     <link rel="icon" href="/storage/images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @csrf
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Template Mo">
@@ -17,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -78,7 +78,7 @@
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Junior and Senior High School</p>
                         <a href="#about" class="main-button-slider" data-toggle="modal"
-                        data-target="#signUpModal">Signup</a>
+                            data-target="#signUpModal">Signup</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">

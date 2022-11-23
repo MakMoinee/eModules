@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,6 +50,13 @@ class SignUpController extends Controller
             $euser->email = $request->email;
             $euser->userType = 2;
             $isSave = $euser->save();
+
+            $newSuser = new User();
+            $newSuser->username = $request->username;
+            $newSuser->email = $request->email;
+            $newSuser->password = Hash::make($request->password);
+            $newSuser->save();
+
             if ($isSave) {
                 session()->put("successCreate", true);
                 return redirect("/");
