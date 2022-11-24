@@ -20,6 +20,15 @@ class LoginController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
+
+            if ($user[0]['userType'] == 1) {
+                return redirect("/admin");
+            }
+
+            if ($user[0]['userType'] == 0) {
+                return redirect("/superadmin");
+            }
+            
             return redirect('/strands');
         } else {
             return redirect("/");
@@ -75,6 +84,10 @@ class LoginController extends Controller
                 // Auth::login($user, false);
                 if ($user[0]['userType'] == 1) {
                     return redirect("/admin");
+                }
+
+                if ($user[0]['userType'] == 0) {
+                    return redirect("/superadmin");
                 }
                 return redirect('/strands');
             }

@@ -2,45 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-class HomeController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
+        if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 1) {
-                return redirect('/admin');
-            }
-
-            if ($user[0]['userType'] == 0) {
-                return redirect("/superadmin");
-            }
             return redirect('/strands');
         } else {
-            $queryResult = DB::table('e_users')->where(['userType' => 0])->get();
-            $userCount = count($queryResult);
-            if ($userCount == 0) {
-                $newUser = new EUsers();
-                $newUser->username = env('SUPER_USER', 'superadmin');
-                $newUser->password = Hash::make(env('SUPER_PASS', 'superadmin'));
-                $newUser->userType = 0;
-                $newUser->save();
-            }
-            return view('welcome');
+            return view('about');
         }
     }
 

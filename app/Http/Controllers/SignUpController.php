@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EUsers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
@@ -39,6 +40,21 @@ class SignUpController extends Controller
     {
 
         if ($request->btnSignup) {
+
+            $queryResult = DB::table('e_users')->where([
+                'firstname' => $request->username,
+                'middlename' => $request->middlename,
+                'lastname' => $request->lastname,
+            ])->get();
+
+            if (count($queryResult) > 0) {
+                session()->put("errorExistingUser", true);
+                return redirect("/");
+            }
+
+
+
+
             $euser = new EUsers();
             $euser->username = $request->username;
             $euser->password = Hash::make($request->password);
@@ -51,11 +67,41 @@ class SignUpController extends Controller
             $euser->userType = 2;
             $isSave = $euser->save();
 
-            $newSuser = new User();
-            $newSuser->username = $request->username;
-            $newSuser->email = $request->email;
-            $newSuser->password = Hash::make($request->password);
-            $newSuser->save();
+
+            if ($isSave) {
+                session()->put("successCreate", true);
+                return redirect("/");
+            }
+            session()->put("errorCreate", true);
+
+            if ($request->btnSignup != "yes") {
+                return redirect("/adminusers");
+            }
+            return redirect("/");
+        } else if ($request->btnSignUpSuper) {
+
+            $queryResult = DB::table('e_users')->where([
+                'firstname' => $request->username,
+                'middlename' => $request->middlename,
+                'lastname' => $request->lastname,
+            ])->get();
+
+            if (count($queryResult) > 0) {
+                session()->put("errorExistingUser", true);
+                return redirect("/");
+            }
+            $euser = new EUsers();
+            $euser->username = $request->username;
+            $euser->password = Hash::make($request->password);
+            $euser->firstname = $request->firstname;
+            $euser->middlename = $request->middlename;
+            $euser->lastname = $request->lastname;
+            $euser->lrn = $request->lrn;
+            $euser->track = $request->track;
+            $euser->email = $request->email;
+            $euser->userType =  $request->userrole;
+            $isSave = $euser->save();
+
 
             if ($isSave) {
                 session()->put("successCreate", true);

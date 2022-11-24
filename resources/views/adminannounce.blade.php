@@ -90,6 +90,11 @@
                                         Strands</span></a>
                             </li>
                             <li>
+                                <a href="/adminusers" class="nav-link px-0 align-middle" style="color:whitesmoke">
+                                    <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Users</span></a>
+                            </li>
+                            <li>
                                 <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
@@ -152,7 +157,8 @@
                                             <td>
                                                 @if ($an['activated'] == 0)
                                                     <button class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#activateModal{{ $an['announceID'] }}" style="font-size: 12px;">Activate</button>
+                                                        data-target="#activateModal{{ $an['announceID'] }}"
+                                                        style="font-size: 12px;">Activate</button>
                                                     <div class="modal fade" id="activateModal{{ $an['announceID'] }}"
                                                         tabindex="-1" role="dialog"
                                                         aria-labelledby="activateModalLabel{{ $an['announceID'] }}"
@@ -185,7 +191,8 @@
                                                         </div>
                                                     </div>
                                                 @else
-                                                    <button class="btn btn-warning" style="font-size: 12px;" data-toggle="modal"
+                                                    <button class="btn btn-warning" style="font-size: 12px;"
+                                                        data-toggle="modal"
                                                         data-target="#deactivateModal{{ $an['announceID'] }}">Deactivate</button>
                                                     <div class="modal fade"
                                                         id="deactivateModal{{ $an['announceID'] }}" tabindex="-1"
@@ -222,9 +229,11 @@
                                                 @endif
 
                                                 <br>
-                                                <button class="btn btn-success" style="font-size: 12px;">View/Edit</button>
+                                                <button class="btn btn-success"
+                                                    style="font-size: 12px;">View/Edit</button>
                                                 <br>
-                                                <button class="btn btn-danger" style="font-size: 12px;" data-toggle="modal"
+                                                <button class="btn btn-danger" style="font-size: 12px;"
+                                                    data-toggle="modal"
                                                     data-target="#deleteModal{{ $an['announceID'] }}">Delete</button>
                                                 <div class="modal fade" id="deleteModal{{ $an['announceID'] }}"
                                                     tabindex="-1" role="dialog"

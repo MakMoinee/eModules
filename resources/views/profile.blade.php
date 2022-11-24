@@ -71,11 +71,11 @@
         <div class="row">
             <div class="mdiv-left" style="width: 30%; height: 500px; margin-top: 120px;  background-color: #d5d5d5">
                 <center>
-                    <img style="margin-top: 20px;" src="/images/profile.png" alt="" srcset=""
+                    <img style="margin-top: 20px;" src="/images/user.png" alt="" srcset=""
                         width="200px" height="200px">
                     <br>
                     <br>
-                    <a href="#">Edit Avatar</a>
+                    {{-- <a href="#">Edit Avatar</a> --}}
                     <br>
                     <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
                 </center>

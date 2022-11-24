@@ -48,7 +48,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/" style="color:#f55858 !important;">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                            <li class="scroll-to-section"><a href="/about">About</a></li>
                             <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
@@ -79,7 +79,7 @@
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Junior and Senior High School</p>
-                        <a href="#about" class="main-button-slider">Signup</a>
+                        <a href="/about" class="main-button-slider">Signup</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">

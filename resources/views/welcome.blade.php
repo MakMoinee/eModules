@@ -47,7 +47,7 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                            <li class="scroll-to-section"><a href="/about">About</a></li>
                             <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
@@ -77,7 +77,7 @@
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Junior and Senior High School</p>
-                        <a href="#about" class="main-button-slider" data-toggle="modal"
+                        <a href="/about" class="main-button-slider" data-toggle="modal"
                             data-target="#signUpModal">Signup</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -116,6 +116,20 @@
             </div>
         </div>
     </footer>
+    @if (session()->pull('errorExistingUser'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'User exisited, Please Contact Your Administrator for possible resetting of password!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorExistingUser') }}
+    @endif
     @if (session()->pull('errorLogin'))
         <script>
             setTimeout(() => {

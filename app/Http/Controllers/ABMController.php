@@ -21,6 +21,11 @@ class ABMController extends Controller
         if (session()->exists("users") && $request['category']) {
             $user = session()->pull("users");
             session()->put('users', $user);
+
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+
             $data = DB::table('academic_strands')->where(['description' => $user[0]['track']])->get();
             $strandID  = $data[0]->strandID;
 
@@ -68,6 +73,20 @@ class ABMController extends Controller
                 'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
             ]);
         } else {
+            if ($request['category'] && $request['strand']) {
+                $data = DB::table('academic_strands')->where(['description' => $request['strand']])->get();
+                $strandID  = $data[0]->strandID;
+                $queryResult = DB::table('academic_tracks')
+                    ->where(['strandID' => $strandID, 'category' => $request['category']])
+                    ->get();
+
+                $trackRes = json_decode($queryResult, true);
+                return view('strandcat', [
+                    'track' => $request['strand'],
+                    'category' => $request['category'],
+                    'trackRes' => $trackRes
+                ]);
+            }
             return redirect("/");
         }
     }

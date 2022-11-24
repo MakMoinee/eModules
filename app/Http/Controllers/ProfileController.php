@@ -23,9 +23,12 @@ class ProfileController extends Controller
             session()->put('users', $user);
             if ($user[0]['userType'] == 1) {
                 return redirect("/");
-            } else {
-                return view('profile', ['user' => $user[0]]);
             }
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+
+            return view('profile', ['user' => $user[0]]);
         } else {
             return redirect("/");
         }
@@ -53,7 +56,9 @@ class ProfileController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
 
 
             $affectedRow = DB::table('e_users')

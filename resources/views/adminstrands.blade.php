@@ -90,6 +90,11 @@
                                         Strands</span></a>
                             </li>
                             <li>
+                                <a href="/adminusers" class="nav-link px-0 align-middle" style="color:whitesmoke">
+                                    <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Users</span></a>
+                            </li>
+                            <li>
                                 <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span

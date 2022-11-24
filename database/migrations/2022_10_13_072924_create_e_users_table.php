@@ -17,12 +17,12 @@ class CreateEUsersTable extends Migration
             $table->id('userID')->autoIncrement();
             $table->string('username');
             $table->string('password');
-            $table->string('firstname');
-            $table->string('middlename');
-            $table->string('lastname');
-            $table->string('lrn');
-            $table->string('track');
-            $table->string('email');
+            $table->string('firstname')->nullable(true);
+            $table->string('middlename')->nullable(true);
+            $table->string('lastname')->nullable(true);
+            $table->string('lrn')->nullable(true);
+            $table->string('track')->nullable(true);
+            $table->string('email')->nullable(true);
             $table->integer('userType');
             $table->timestamps();
         });

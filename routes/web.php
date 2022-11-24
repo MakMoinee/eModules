@@ -2,8 +2,10 @@
 
 use App\Events\PostAnnouncement;
 use App\Http\Controllers\ABMController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStrandController;
+use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\SignOutController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\StrandController;
 use App\Http\Controllers\StudentAnnouncement;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ViewerController;
 use App\Http\Controllers\WebNotificationController;
 use App\Models\Announcements;
@@ -49,3 +52,6 @@ Route::resource('/announcements', AnnouncementsController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/studentannounce', StudentAnnouncement::class);
 Route::resource('/viewer', ViewerController::class);
+Route::resource('/about', AboutController::class);
+Route::resource('/superadmin', SuperAdminController::class);
+Route::resource('/adminusers', AdminUsersController::class);

@@ -63,7 +63,7 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                            <li class="scroll-to-section"><a href="/about">About</a></li>
                             <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
                                     Strands</a>
                             </li>

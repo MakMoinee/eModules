@@ -49,30 +49,18 @@ class ModulesController extends Controller
                 return redirect('/');
             }
 
-            $file = $request->file('files');
-            // dd(['req' => $request, 'file' => $file]);
-            $mimetype = $file->getMimeType();
-
-            if ($mimetype == "application/pdf") {
-                $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules';
-                try {
-                    $fileName = $request->description . "" . date('ymd', strtotime(now())) . "." . $file->getClientOriginalExtension();
-                    $isFile = $file->move($destinationPath,  $fileName);
-                    $newEmodule = new Modules();
-                    $newEmodule->trackID = $request->tid;
-                    $newEmodule->description = $request->description;
-                    $newEmodule->sequence = $request->sequence;
-                    $newEmodule->filePath =  $fileName;
-                    $isSave = $newEmodule->save();
-                    if ($isSave) {
-                        session()->put('successAddEModule', true);
-                    } else {
-                        session()->put('errorAddEModule', true);
-                    }
-                } catch (Exception $e) {
+            try {
+                $newEmodule = new Modules();
+                $newEmodule->trackID = $request->tid;
+                $newEmodule->description = $request->description;
+                $newEmodule->sequence = $request->sequence;
+                $isSave = $newEmodule->save();
+                if ($isSave) {
+                    session()->put('successAddEModule', true);
+                } else {
+                    session()->put('errorAddEModule', true);
                 }
-            } else {
-                session()->put('errorFileNotValid', true);
+            } catch (Exception $e) {
             }
             $id = $request->tid;
             return redirect(route('modules.show', ['module' => $id]));
