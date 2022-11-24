@@ -29,5 +29,9 @@ class EUsers extends Model
         "email",
     ];
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
     // '', '', '', '', '', '
 }

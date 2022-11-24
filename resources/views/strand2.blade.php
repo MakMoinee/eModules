@@ -94,7 +94,7 @@
                                         class="ms-1 d-none d-sm-inline">Notifications</span></a>
                             </li>
                             <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>
@@ -102,8 +102,7 @@
                         </ul>
                         <hr>
                         <div class="dropdown pb-4">
-                            <a href="#"
-                                class="d-flex align-items-center text-white text-decoration-none"
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
@@ -359,9 +358,21 @@
     <!-- Global Init -->
     <script src="js/custom.js"></script>
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/637fbe0adaff0e1306d944cd/1gilfsn1m';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
     <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
-        <script src="js/push.js"></script>
-    </body>
+    <script src="js/push.js"></script>
+</body>
 
 </html>

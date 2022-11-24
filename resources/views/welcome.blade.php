@@ -122,7 +122,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'User exisited, Please Contact Your Administrator for possible resetting of password!',
+                    title: 'user already registered. please login',
                     showConfirmButton: false,
                     timer: 1300
                 });

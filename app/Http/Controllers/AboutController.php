@@ -16,7 +16,13 @@ class AboutController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            return redirect('/strands');
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+            return view('studentabout', [
+                'track' => $user[0]['track'],
+                'user' => $user[0]['username']
+            ]);
         } else {
             return view('about');
         }

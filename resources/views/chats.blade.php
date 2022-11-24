@@ -17,24 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
-    <style>
-        .card-img-top {
-            width: 100%;
-            height: 15vw;
-            object-fit: cover;
-        }
-
-        .card-body {
-            height: 15vw;
-            object-fit: cover;
-        }
-    </style>
 </head>
 
 <body>
@@ -95,9 +77,9 @@
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item">
-                                <a href="/announcements" class="nav-link align-middle px-0" style="color:whitesmoke">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"
-                                        style="color:#f55858 !important;">Announcements</span>
+                                <a href="/studentannounce" class="nav-link align-middle px-0" style="color:whitesmoke">
+                                    <i class="fs-4 bi-house"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Announcements</span>
                                 </a>
                             </li>
                             <li>
@@ -106,16 +88,17 @@
                                         class="ms-1 d-none d-sm-inline">Notifications</span></a>
                             </li>
                             <li>
-                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Chat</span></a>
+                                        class="ms-1 d-none d-sm-inline"
+                                        style="color:#f55858 !important;">Chat</span></a>
                             </li>
                         </ul>
                         <hr>
                         <div class="dropdown pb-4">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="dropdownUser1" aria-expanded="false">
                                 <img src="/images/user.png" alt="hugenerd" width="30" height="30"
                                     class="rounded-circle">
                                 <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
@@ -124,39 +107,9 @@
                     </div>
                 </div>
                 <div class="col py-3">
-                    <div class="header-text">
-                        <div class="container">
-                            <div class="row">
-                                @if ($isAvailable == false)
-                                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                                        <div class="card" style="height: 250px;">
-                                            <div class="card-body p-3">
-                                                <div class="row" style="padding:50px;">
-                                                    <div class="numbers">
-                                                        <label for="noavailable" class="for">There are no
-                                                            announcements as of the moment</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    @foreach ($announce as $an)
-                                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;">
-                                            <div class="card" style="width: 20rem;">
-                                                <img src="/storage/announcements/{{ $an['card'] }}"
-                                                    class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $an['description'] }}</h5>
-                                                    <p class="card-text">{{ $an['subtext'] }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endif
-
-                            </div>
-                        </div>
+                    <div class="container">
+                        <iframe style="height: 450px; width: 100%;"
+                            src="https://tawk.to/chat/637fbe0adaff0e1306d944cd/1gilfsn1m" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -189,6 +142,8 @@
             </div>
         </div>
     </footer>
+    <!--Start of Tawk.to Script-->
+    <!--End of Tawk.to Script-->
     @if (session()->pull('successLogin'))
         <script>
             setTimeout(() => {
@@ -200,7 +155,7 @@
                     timer: 1300
                 });
             }, 1500);
-        </script>
+        </script>;
         {{ session()->forget('successLogin') }}
     @endif
 
@@ -278,20 +233,7 @@
 
     <!-- Global Init -->
     <script src="js/custom.js"></script>
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/637fbe0adaff0e1306d944cd/1gilfsn1m';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
+
     <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
     <script src="js/push.js"></script>
 </body>

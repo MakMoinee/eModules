@@ -9,6 +9,7 @@ channel.bind("App\\Events\\PostAnnouncement", (post) => {
         return;
     }
 
+
     Notification.requestPermission((permission) => {
         let notification = new Notification("New Announcements", {
             body: post.title, // content for the alert

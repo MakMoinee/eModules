@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EUsers;
+use App\Models\Message;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class ChatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +17,16 @@ class AdminController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] != 2) {
                 return redirect('/');
             }
-            $nem = $user[0]['username'];
-            $nUsers = EUsers::all();
-            $total = count($nUsers);
-            $newUsers = DB::table('vwtotalnewusers')->first();
-            $totalNewUsers = $newUsers->TotalNewUsers;
-            return view('admin', ['nem' => $nem, 'totalNewUsers' => $totalNewUsers, 'totalUsers' => $total]);
+            return view('chats', [
+                'track' => $user[0]['track'],
+                'user' => $user[0]['username'],
+                'users' => $user
+            ]);
         } else {
-            return redirect("/");
+            return redirect('/');
         }
     }
 
@@ -96,5 +94,32 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function fetchMessages()
+    {
+        return Message::with('user')->get();
+    }
+
+    /**
+     * Persist message to database
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function sendMessage(Request $request)
+    {
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+
+            $message = $user->messages()->create([
+                'message' => $request->input('message')
+            ]);
+
+            return ['status' => 'Message Sent!'];
+        } else {
+            return redirect('/');
+        }
     }
 }

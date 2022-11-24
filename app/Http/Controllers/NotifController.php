@@ -14,7 +14,30 @@ class NotifController extends Controller
      */
     public function index()
     {
-        //
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+            $notif = Notif::where('description', '<>', '')->orderBy('created_at', 'desc')->get();
+            $newNotif = array();
+            $count = 0;
+
+            foreach ($notif as $a) {
+                $count++;
+                if ($count <= 5) {
+                    array_push($newNotif, $a);
+                }
+            }
+            return view('notif', [
+                'track' => $user[0]['track'],
+                'user' => $user[0]['username'],
+                'notifs' => $newNotif
+            ]);
+        } else {
+            return redirect("/");
+        }
     }
 
     /**
