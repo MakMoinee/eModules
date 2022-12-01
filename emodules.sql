@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 01/12/2022 07:41:25
+ Date: 01/12/2022 23:06:55
 */
 
 SET NAMES utf8mb4;
@@ -54,12 +54,11 @@ CREATE TABLE `academic_tracks`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`trackID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of academic_tracks
 -- ----------------------------
-INSERT INTO `academic_tracks` VALUES (2, 1, 1, 'Physical Education', '80', NULL, NULL, 'CORE', '2022-11-30 22:14:46', '2022-11-30 22:14:46');
 
 -- ----------------------------
 -- Table structure for announcements
@@ -74,7 +73,7 @@ CREATE TABLE `announcements`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`announceID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of announcements
@@ -112,15 +111,11 @@ CREATE TABLE `e_users`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`userID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of e_users
 -- ----------------------------
-INSERT INTO `e_users` VALUES (1, 'superadmin', '$2y$10$7QqL.KCFs76TakYmwofoz.kRkSQsP8gwfOPefLnmDIampYT96ZOhW', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2022-11-24 18:28:36', '2022-11-24 18:28:36');
-INSERT INTO `e_users` VALUES (2, 'admin', '$2y$10$8C2JANdGeatmDj4lbW4g8eODAdu8c.ZUmAgRSzpFmBbaN5OK8AeeC', 'admin', 'admin', 'admin', NULL, 'ABM', NULL, 1, '2022-11-24 19:17:53', '2022-11-24 19:17:53');
-INSERT INTO `e_users` VALUES (3, 'sample', '$2y$10$aaLR0Pd3Zciq5YHpwNLOie31AjssmdzD0TKDM6dqqyABm1Hz2dwHG', 'sample', 'sample', 'sample', '123456', 'ABM', 'sample@gmail.com', 2, '2022-11-25 14:50:41', '2022-11-25 14:50:41');
-INSERT INTO `e_users` VALUES (5, 'sadmin', '$2y$10$VpQ0Xp6rKEYxO00bv.wwk.NvZXvlNb/96CtTrSkp4r.5kf49lGtdS', 'sadmin', 'sadmin', 'sadmin', NULL, NULL, NULL, 1, '2022-11-30 21:49:56', '2022-11-30 21:49:56');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -168,7 +163,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -185,6 +180,7 @@ INSERT INTO `migrations` VALUES (9, '2022_11_21_164149_create_announcements_tabl
 INSERT INTO `migrations` VALUES (10, '2022_11_22_135835_create_device_keys_table', 1);
 INSERT INTO `migrations` VALUES (11, '2022_11_23_074902_create_notifs_table', 1);
 INSERT INTO `migrations` VALUES (12, '2022_11_24_182703_create_messages_table', 1);
+INSERT INTO `migrations` VALUES (13, '2022_11_30_231404_create_user_pic_profiles_table', 1);
 
 -- ----------------------------
 -- Table structure for modules
@@ -199,13 +195,11 @@ CREATE TABLE `modules`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`moduleID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of modules
 -- ----------------------------
-INSERT INTO `modules` VALUES (3, 2, 1, 'Unit 1', 'Unit 1221130.pdf', '2022-11-30 22:52:10', '2022-11-30 22:52:10');
-INSERT INTO `modules` VALUES (4, 2, 2, 'Unit 2', 'Unit 2221130.pdf', '2022-11-30 22:52:27', '2022-11-30 22:52:27');
 
 -- ----------------------------
 -- Table structure for notifs
@@ -217,7 +211,7 @@ CREATE TABLE `notifs`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`notifID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notifs
@@ -259,6 +253,23 @@ CREATE TABLE `personal_access_tokens`  (
 
 -- ----------------------------
 -- Records of personal_access_tokens
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user_pic_profiles
+-- ----------------------------
+DROP TABLE IF EXISTS `user_pic_profiles`;
+CREATE TABLE `user_pic_profiles`  (
+  `picProfileID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `userID` int NOT NULL,
+  `filePath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`picProfileID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_pic_profiles
 -- ----------------------------
 
 -- ----------------------------
