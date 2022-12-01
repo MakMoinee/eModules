@@ -11,33 +11,15 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>E Modules</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
-    <style>
-        .card-img-top {
-            width: 100%;
-            height: 15vw;
-            object-fit: cover;
-        }
-
-        .card-body {
-            height: 15vw;
-            object-fit: cover;
-        }
-    </style>
 </head>
 
-<body>
+<body style="background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -51,7 +33,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky" style="background: #ff589e;color:bisque;">
         <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -64,11 +46,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
-                                    Strands</a>
+                            <li class="scroll-to-section"><a href="/about" style="color:#f55858 !important;">About</a>
                             </li>
-                            <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
+                            <li class="scroll-to-section"><a href="/">Home</a>
+                            </li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
                                     data-target="#logOutModal">Sign Out</a></li>
                         </ul>
@@ -82,83 +63,53 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    <section class="section" id="about" style="background: #ff589e;">
+
+
+    <!-- ***** Welcome Area Start ***** -->
+
+    <section class="section" id="about"
+        style="border:none;background: #ff589e;margin-top: 50px; background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
         <div class="container-fluid">
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
                     style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
-                        <a href="/strands"
-                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <span class="fs-5 d-none d-sm-inline" style="margin-top: 20px;">Dashboard</span>
-                        </a>
-                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                            id="menu">
-                            <li class="nav-item">
-                                <a href="/announcements" class="nav-link align-middle px-0" style="color:whitesmoke">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"
-                                        style="color:#f55858 !important;">Announcements</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/notifications" class="nav-link px-0 align-middle" style="color:whitesmoke">
-                                    <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Notifications</span></a>
-                            </li>
-                            <li>
-                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
-                                    style="color:whitesmoke">
-                                    <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Chat</span></a>
-                            </li>
-                        </ul>
-                        <hr>
-                        <div class="dropdown pb-4">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col py-3">
-                    <div class="header-text">
-                        <div class="container">
-                            <div class="row">
-                                @if ($isAvailable == false)
-                                    <label for="noavailable" class="for"
-                                        style="padding:10px;color:white;background: #20202057">There are
-                                        no
-                                        announcements as of the moment</label>
-                                    {{-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                                        <div class="card" style="height: 250px;">
-                                            <div class="card-body p-3">
-                                                <div class="row" style="padding:50px;">
-                                                    <div class="numbers">
-                                                        <label for="noavailable" class="for">There are no
-                                                            announcements as of the moment</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                @else
-                                    @foreach ($announce as $an)
-                                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;">
-                                            <div class="card" style="width: 20rem;">
-                                                <img src="/storage/announcements/{{ $an['card'] }}"
-                                                    class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $an['description'] }}</h5>
-                                                    <p class="card-text">{{ $an['subtext'] }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <center>
+                                <h1 style="margin-left: -150px;">About US</h1>
+                            </center>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
+                            <div class="card" style="width: 60rem;height: 100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mission</h5>
+                                    <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
+                                        environmental, skillful,
+                                        and intellectual learner.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
 
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
+                            <div class="card" style="width: 60rem;height:100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Vision</h5>
+                                    <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
+                                        the light of Christ through a
+                                        well-rounded educational program and holistic learning experience.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,9 +117,8 @@
             </div>
         </div>
     </section>
-
-
     <!-- ***** Welcome Area End ***** -->
+
 
 
     <!-- ***** Footer Start ***** -->
@@ -204,7 +154,7 @@
                     timer: 1300
                 });
             }, 1500);
-        </script>
+        </script>;
         {{ session()->forget('successLogin') }}
     @endif
 
@@ -282,22 +232,7 @@
 
     <!-- Global Init -->
     <script src="js/custom.js"></script>
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/637fbe0adaff0e1306d944cd/1gilfsn1m';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
-    <script src="js/push.js"></script>
+
 </body>
 
 </html>

@@ -71,11 +71,17 @@
         <div class="row">
             <div class="mdiv-left" style="width: 30%; height: 500px; margin-top: 120px;  background-color: #d5d5d5">
                 <center>
-                    <img style="margin-top: 20px;" src="/images/user.png" alt="" srcset=""
-                        width="200px" height="200px">
+                    @if ($pic == '')
+                        <img style="margin-top: 20px;" src="/images/user.png" id="profilePic2" alt=""
+                            srcset="" width="200px" height="200px">
+                    @else
+                        <img style="margin-top: 20px;" src="/storage/profiles/{{ $pic }}" id="profilePic2"
+                            alt="" srcset="" width="200px" height="200px">
+                    @endif
+
                     <br>
                     <br>
-                    {{-- <a href="#">Edit Avatar</a> --}}
+                    <a href="#" data-toggle="modal" data-target="#uploadProfileModal">Edit Avatar</a>
                     <br>
                     <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
                 </center>
@@ -162,6 +168,52 @@
         {{ session()->forget('successUpdate') }}
     @endif
 
+    @if (session()->pull('successUploadPic'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Updated Profile Picture',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successUploadPic') }}
+    @endif
+
+    @if (session()->pull('errorUploadPic'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Update Profile Picture',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorUploadPic') }}
+    @endif
+
+
+    @if (session()->pull('errorNotValidFilePic'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Not Valid Profile Pic File Format',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorNotValidFilePic') }}
+    @endif
+
     @if (session()->pull('errorUpdate'))
         <script>
             setTimeout(() => {
@@ -176,6 +228,42 @@
         </script>;
         {{ session()->forget('errorUpdate') }}
     @endif
+
+    <div class="modal fade" id="uploadProfileModal" tabindex="-1" role="dialog"
+        aria-labelledby="uploadProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('userprofiles.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <br>
+                            <br>
+                            <div class="form-group" style="margin-left: 33px;">
+                                <label for="file" class="for"><b>Add Profile Picture</b></label>
+                                <br>
+                                @if ($pic == '')
+                                    <img style="margin-top: 20px;" src="/images/user.png" id="profilePic2"
+                                        alt="" srcset="" width="200px" height="200px">
+                                @else
+                                    <img style="margin-top: 20px;" src="/storage/profiles/{{ $pic }}"
+                                        id="profilePic2" alt="" srcset="" width="200px"
+                                        height="200px">
+                                @endif
+                                <br>
+                                <input type="file" name="files" id="" accept=".jpg, .png, .jpeg"
+                                    onchange="readURL(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border:none;">
+                        <button type="submit" class="btn btn-primary">Yes, Proceed</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
@@ -265,10 +353,38 @@
 
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // $('.image-upload-wrap').hide();
+                    let profilePic = document.getElementById('profilePic');
+
+                    profilePic.setAttribute("src", e.target.result);
+                    // $('.file-upload-content').show();
+
+                    // $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            let profilePic = document.getElementById('profilePic');
+            profilePic.setAttribute("src", '/storage/images/user.png');
+        }
     </script>
 
 
-<script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
     <script src="js/push.js"></script>
 </body>
 

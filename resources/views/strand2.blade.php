@@ -104,8 +104,14 @@
                         <div class="dropdown pb-4">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
+                                @if ($pic == '')
+                                    <img src="/images/user.png" alt="hugenerd" width="30" height="30"
+                                        class="rounded-circle">
+                                @else
+                                    <img src="/storage/profiles/{{ $pic }}" alt="hugenerd" width="30"
+                                        height="30" class="rounded-circle">
+                                @endif
+
                                 <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
                             </a>
                         </div>
@@ -116,6 +122,62 @@
                         <div class="container">
                             <div class="row">
                                 <div class="container-fluid py-4">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                            <a href="/studentannounce">
+                                                <div class="card">
+                                                    <div class="card-body p-3">
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <div class="numbers"
+                                                                    style="justify-content: center;padding-left: 30px;">
+                                                                    <p
+                                                                        class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                                        <img src="/images/megaphone.png"
+                                                                            width="120px" height="120px"
+                                                                            alt="">
+                                                                    </p>
+                                                                    <br>
+                                                                    <h6 class="font-weight-bolder mb-0"
+                                                                        style="font-size: 13px;">
+                                                                        Announcements
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                            <a href="/chats">
+                                                <div class="card">
+                                                    <div class="card-body p-3">
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <div class="numbers"
+                                                                    style="justify-content: center;padding-left: 30px;">
+                                                                    <p
+                                                                        class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                                        <img src="/images/chat.png" width="120px"
+                                                                            height="120px" alt="">
+                                                                    </p>
+                                                                    <br>
+
+                                                                </div>
+                                                                <center>
+                                                                    <h6 class="font-weight-bolder mb-0">
+                                                                        Talk to admin
+                                                                    </h6>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br>
                                     <div class="row">
                                         @if ($track == 'ABM')
                                             <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;"

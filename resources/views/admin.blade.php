@@ -46,6 +46,8 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
+                            <li class="scroll-to-section"><a href="/about">About</a>
+                            </li>
                             <li class="scroll-to-section"><a href="/" style="color:#f55858 !important;">Home</a>
                             </li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
@@ -95,8 +97,8 @@
                                         class="ms-1 d-none d-sm-inline">Users</span></a>
                             </li>
                             <li>
-                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget" target="_blank"
-                                    data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget"
+                                    target="_blank" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>
@@ -117,16 +119,94 @@
                     <div class="container-fluid py-4">
                         <div class="row">
                             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <a href="/adminstrands">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers"
+                                                        style="justify-content: center;padding-left: 30px;">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                            <img src="/images/edit.png" width="120px" height="120px"
+                                                                alt="">
+                                                        </p>
+                                                        <br>
+                                                        <h6 class="font-weight-bolder mb-0">
+                                                            Edit Subjects
+                                                            Upload E-Modules
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <a href="/announcements">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers"
+                                                        style="justify-content: center;padding-left: 30px;">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                            <img src="/images/megaphone.png" width="120px"
+                                                                height="120px" alt="">
+                                                        </p>
+                                                        <br>
+                                                        <h6 class="font-weight-bolder mb-0">
+                                                            Make Announcements
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget"
+                                    target="_blank">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers"
+                                                        style="justify-content: center;padding-left: 30px;">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                            <img src="/images/chat.png" width="120px" height="120px"
+                                                                alt="">
+                                                        </p>
+                                                        <br>
+                                                        
+                                                    </div>
+                                                   <center>
+                                                    <h6 class="font-weight-bolder mb-0">
+                                                        Chats
+                                                    </h6>
+                                                   </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                                 <div class="card">
                                     <div class="card-body p-3">
                                         <div class="row">
                                             <div class="col-8">
                                                 <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total
-                                                        Users</p>
                                                     <h5 class="font-weight-bolder mb-0">
                                                         {{ $totalUsers }}
                                                     </h5>
+                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total
+                                                        Users</p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -139,11 +219,12 @@
                                         <div class="row">
                                             <div class="col-8">
                                                 <div class="numbers">
-                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New
-                                                        Users</p>
                                                     <h5 class="font-weight-bolder mb-0">
                                                         {{ $totalNewUsers }}
                                                     </h5>
+                                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New
+                                                        Users</p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>

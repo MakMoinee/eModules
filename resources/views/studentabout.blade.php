@@ -33,7 +33,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -65,70 +65,48 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    <section class="section" id="about" style="background: #ff589e;">
+    <section class="section" id="about"
+        style="background: #ff589e;margin-top: 50px; background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
         <div class="container-fluid">
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
                     style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
-                        <a href="/strands"
-                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <span class="fs-5 d-none d-sm-inline" style="margin-top: 20px;">Dashboard</span>
-                        </a>
-                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                            id="menu">
-                            <li class="nav-item">
-                                <a href="/studentannounce" class="nav-link align-middle px-0" style="color:whitesmoke">
-                                    <i class="fs-4 bi-house"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Announcements</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/notifications" class="nav-link px-0 align-middle" style="color:whitesmoke">
-                                    <i class="fs-4 bi-table" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Notifications</span></a>
-                            </li>
-                            <li>
-                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
-                                    style="color:whitesmoke">
-                                    <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Chat</span></a>
-                            </li>
-                        </ul>
-                        <hr>
-                        <div class="dropdown pb-4">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none"
-                                id="dropdownUser1" aria-expanded="false">
-                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col py-3">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 250px;">
-                                <div class="card" style="width: 20rem;height: 100%;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Mission</h5>
-                                        <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
-                                            environmental, skillful,
-                                            and intellectual learner.
-                                        </p>
-                                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <center>
+                                <h1 style="margin-left: -150px;">About US</h1>
+                            </center>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
+                            <div class="card" style="width: 60rem;height: 100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mission</h5>
+                                    <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
+                                        environmental, skillful,
+                                        and intellectual learner.
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 250px;">
-                                <div class="card" style="width: 20rem;height:100%">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Vision</h5>
-                                        <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
-                                            the light of Christ through a
-                                            well-rounded educational program and holistic learning experience.
-                                        </p>
-                                    </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
+                            <div class="card" style="width: 60rem;height:100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Vision</h5>
+                                    <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
+                                        the light of Christ through a
+                                        well-rounded educational program and holistic learning experience.
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -48,7 +48,9 @@ class ABMController extends Controller
                 } else {
                     $tmpMod->isAvailable = true;
                     $tmpEmod = json_decode($queryResult2, true);
-                    array_push($availableEMod, $tmpEmod[0]);
+                    foreach ($tmpEmod as $emod) {
+                        array_push($availableEMod, $emod);
+                    }
                 }
                 array_push($moduleHelper, $tmpMod);
             }
@@ -63,6 +65,14 @@ class ABMController extends Controller
             //     'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
             // ]);
 
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+
             return view('strandabm', [
                 'track' => $user[0]['track'],
                 'user' => $user[0]['username'],
@@ -70,7 +80,8 @@ class ABMController extends Controller
                 'category' => $request['category'],
                 'moduleHelper' => $moduleHelper,
                 'emodules' => $availableEMod,
-                'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
+                'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/',
+                'pic' => $pic
             ]);
         } else {
             if ($request['category'] && $request['strand']) {

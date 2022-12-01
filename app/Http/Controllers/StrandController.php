@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StrandController extends Controller
 {
@@ -19,7 +20,15 @@ class StrandController extends Controller
             if ($user[0]['userType'] == 1) {
                 return redirect('/admin');
             }
-            return view('strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username']]);
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+            return view('strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username'], 'pic' => $pic]);
         } else {
             return view('strand');
         }

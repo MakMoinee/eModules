@@ -48,12 +48,32 @@ class ModulesController extends Controller
             if ($user[0]['userType'] != 1) {
                 return redirect('/');
             }
+            $file = $request->file('files');
+            $fileName = "";
+            if ($file) {
+                $mimetype = $file->getMimeType();
+
+                if ($mimetype == "application/pdf" || $mimetype == "application/docs" || $mimetype == "applications/xlsx" || $mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || $mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $mimetype == "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
+                    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules';
+                    try {
+                        $fileName = $request->description . "" . date('ymd', strtotime(now())) . "." . $file->getClientOriginalExtension();
+                        $isFile = $file->move($destinationPath,  $fileName);
+                    } catch (Exception $e) {
+                    }
+                } else {
+                    session()->put('errorMimeTypeNotValid', true);
+                    $id = $request->tid;
+                    $title = $request->title;
+                    return redirect(route('modules.show', ['module' => $id, 'title' => $title]));
+                }
+            }
 
             try {
                 $newEmodule = new Modules();
                 $newEmodule->trackID = $request->tid;
                 $newEmodule->description = $request->description;
                 $newEmodule->sequence = $request->sequence;
+                $newEmodule->filePath = $fileName;
                 $isSave = $newEmodule->save();
                 if ($isSave) {
                     session()->put('successAddEModule', true);
@@ -84,6 +104,7 @@ class ModulesController extends Controller
             if ($user[0]['userType'] != 1) {
                 return redirect('/');
             }
+            $title = $request->title;
             $nem = $user[0]['username'];
             $strandsAvailable = AcademicStrands::all();
 
@@ -100,7 +121,7 @@ class ModulesController extends Controller
                 'availableStrands' => $strandsAvailable,
                 'emodules' => $emodules,
                 'tracks' => $tracks,
-                'title' => $request->title,
+                'title' => $title,
                 'id' => $id
             ]);
         } else {

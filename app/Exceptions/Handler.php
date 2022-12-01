@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Models\AcademicStrands;
+use App\Models\AcademicTrack;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\PostTooLargeException;
@@ -51,7 +52,11 @@ class Handler extends ExceptionHandler
             $idStr = $request->getQueryString("id");
             $idSlice = explode("=", $idStr, strlen($idStr));
             $id = $idSlice[1];
-            return redirect(route('modules.show', ['module' => $id]) . "?err=1");
+
+            $track = AcademicTrack::where(['trackID' => $id])->get();
+            $title = $track[0]['description'];
+
+            return redirect(route('modules.show', ['module' => $id, 'title' => $title, 'err' => 1]));
         }
         return parent::render($request, $exception);
     }

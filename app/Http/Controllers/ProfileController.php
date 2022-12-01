@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\UserPicProfile;
+use Exception;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +30,18 @@ class ProfileController extends Controller
                 return redirect('/');
             }
 
-            return view('profile', ['user' => $user[0]]);
+            $uid = $user[0]['userID'];
+
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+
+            // dd(['query' => $queryResult, 'pic' => $pic]);
+
+            return view('profile', ['user' => $user[0], 'pic' => $pic]);
         } else {
             return redirect("/");
         }

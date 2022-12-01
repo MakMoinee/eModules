@@ -49,7 +49,8 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic Strands</a>
+                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
+                                    Strands</a>
                             </li>
                             <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
                             <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
@@ -70,12 +71,40 @@
     <!-- ***** Welcome Area Start ***** -->
     <div class="welcome-area" id="welcome">
 
-        
+
         <!-- ***** Header Text Start ***** -->
         <div class="header-text" style="margin-top: 180px; height:650px;">
             <div class="container">
                 <div class="row">
                     <div class="container-fluid py-4">
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                <a href="/chats">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers"
+                                                        style="justify-content: center;padding-left: 30px;">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                            <img src="/images/chat.png" width="120px" height="120px"
+                                                                alt="">
+                                                        </p>
+                                                        <br>
+
+                                                    </div>
+                                                    <center>
+                                                        <h6 class="font-weight-bolder mb-0">
+                                                            Chats
+                                                        </h6>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                         <div class="row">
                             @if ($track == 'ABM')
                                 <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
@@ -292,7 +321,7 @@
     <!-- Global Init -->
     <script src="js/custom.js"></script>
 
-<script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
     <script src="js/push.js"></script>
 </body>
 

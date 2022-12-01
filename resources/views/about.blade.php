@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body style="background: #bfbfbf">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -74,12 +74,13 @@
     <div class="welcome-area" id="welcome">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text" style="margin-top: 180px; height:650px;">
+        <div class="header-text"
+            style="margin-top: 300px;margin-bottom: 30px;height:850px;background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="container-fluid py-4">
                         <div class="row">
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 250px;">
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
                                 <div class="card" style="width: 20rem;height: 100%;">
                                     <div class="card-body">
                                         <h5 class="card-title">Mission</h5>
@@ -90,7 +91,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 250px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+
+                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
                                 <div class="card" style="width: 20rem;height:100%">
                                     <div class="card-body">
                                         <h5 class="card-title">Vision</h5>
@@ -103,6 +109,8 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
@@ -113,7 +121,7 @@
 
 
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf;margin-top: 10px;">
         <div class="container">
             <div class="row">
                 <center>
@@ -252,7 +260,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- jQuery -->
     <script src="js/jquery-2.1.0.min.js"></script>
 

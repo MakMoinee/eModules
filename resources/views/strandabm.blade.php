@@ -99,8 +99,13 @@
                         <div class="dropdown pb-4">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                                 id="dropdownUser1" aria-expanded="false">
-                                <img src="/images/user.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
+                                @if ($pic == '')
+                                    <img src="/images/user.png" alt="hugenerd" width="30" height="30"
+                                        class="rounded-circle">
+                                @else
+                                    <img src="/storage/profiles/{{ $pic }}" alt="hugenerd" width="30"
+                                        height="30" class="rounded-circle">
+                                @endif
                                 <span class="d-none d-sm-inline mx-1">{{ $user }}</span>
                             </a>
                         </div>
@@ -439,6 +444,7 @@
                                                                                                             <li><a href="{{ route('viewer.show', ['viewer' => $em['filePath']]) }}"
                                                                                                                     target="_blank">{{ $em['description'] }}</a>
                                                                                                             </li>
+                                                                                                            <hr>
                                                                                                         @endif
                                                                                                     </ul>
                                                                                                 @endforeach

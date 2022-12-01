@@ -95,7 +95,8 @@
                                         class="ms-1 d-none d-sm-inline">Users</span></a>
                             </li>
                             <li>
-                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget" target="_blank" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget"
+                                    target="_blank" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>
@@ -120,9 +121,6 @@
                         </div>
                         <br>
                         <div class="row">
-                            @foreach ($tracks as $tra)
-                                {{-- <h3>{{ $tra['description'] }}</h3> --}}
-                            @endforeach
                             <a href="/adminstrands" class="btn btn-success" style="margin-right: 10px;">Go Back</a>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addModuleModal">Add
                                 E-Module</button>
@@ -205,7 +203,8 @@
                                                                                     Module Docs</b></label>
                                                                             <br>
                                                                             <input type="file" name="files"
-                                                                                id="" accept=".pdf">
+                                                                                id=""
+                                                                                accept=".pdf, .docx, .xlsx">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <input type="hidden" name="tid"
@@ -353,8 +352,15 @@
                             <div class="form-group">
                                 <input type="hidden" name="tid" value="{{ $id }}">
                                 <input type="hidden" name="formType" value="upload">
+                                <input type="hidden" name="title" value="{{ $title }}">
                             </div>
-
+                            <div class="form-group" style="margin-left: 35px">
+                                <label for="emodule" class="emodule"><b>E
+                                        Module Docs</b></label>
+                                <br>
+                                <input type="file" name="files" id=""
+                                    accept=".pdf, .docx, .xlsx, .pptx">
+                            </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -407,6 +413,20 @@
             }, 1500);
         </script>;
         {{ session()->forget('successAddEModule') }}
+    @endif
+    @if (session()->pull('errorMimeTypeNotValid'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'File not valid, Please try valid file',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorMimeTypeNotValid') }}
     @endif
     @if (session()->pull('errorDeleteModule'))
         <script>

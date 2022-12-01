@@ -117,7 +117,7 @@
                     <div class="container">
                         <div class="row">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addModuleModal">Add
-                                Module</button>
+                                Subject</button>
                         </div>
                         <br>
                         <div class="row" style="background: whitesmoke;" class="table-responsive">
@@ -203,7 +203,7 @@
                                                                 <h5 class="modal-title"
                                                                     id="viewModuleModalLabel{{ $mod['trackID'] }}">
                                                                     View/Edit
-                                                                    Module</h5>
+                                                                    Subject</h5>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
@@ -355,7 +355,7 @@
                                                                     <h5 class="modal-title"
                                                                         id="deleteModalLabel{{ $mod['trackID'] }}">
                                                                         Do you want to
-                                                                        proceed Deleting Module ?</h5>
+                                                                        proceed Deleting Subject ?</h5>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="submit"
@@ -442,7 +442,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModuleModalLabel">Add Module</h5>
+                    <h5 class="modal-title" id="addModuleModalLabel">Add Subject</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -480,11 +480,6 @@
                                 <input type="text" name="prerequisite" id=""
                                     placeholder="Pre-requisite">
                             </div>
-                            <div class="form-group" style="margin-left: 35px">
-                                <label for="emodule" class="emodule"><b>E Module Docs</b></label>
-                                <br>
-                                <input type="file" name="file" id="">
-                            </div>
 
                     </div>
                 </div>
@@ -504,7 +499,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Updated Module',
+                    title: 'Successfully Updated Subject',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -518,7 +513,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Deleted Module',
+                    title: 'Successfully Deleted Subject',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -532,7 +527,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Added Module',
+                    title: 'Successfully Added Subject',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -546,7 +541,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to delete module, Please Try Again!',
+                    title: 'Failed to delete subject, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -560,7 +555,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to update module, Please Try Again!',
+                    title: 'Failed to update subject, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -574,7 +569,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to add module, Please Try Again!',
+                    title: 'Failed to add subject, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
@@ -588,7 +583,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to add module, Existing Sequence, Please Try Again!',
+                    title: 'Failed to add subject, Existing Sequence, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });

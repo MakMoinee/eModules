@@ -70,7 +70,7 @@
                     <!-- Content Here --->
                     <div class="container">
                         <div class="row">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">Add
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#chooseRoleModal">Add
                                 User</button>
                         </div>
                         <br>
@@ -203,79 +203,103 @@
                                                                                 style="width:150px;margin-left: 33px;"
                                                                                 value="{{ $item['lastname'] }}">
                                                                         </div>
-                                                                        <div class="form-group"
-                                                                            style="margin-left: 60px;margin-top: -12px;">
-                                                                            <label for="lrn"
-                                                                                class="for">LRN</label>
-                                                                            <label for="Track" class="for"
-                                                                                style="margin-left: 153px;">Track</label>
-                                                                        </div>
-                                                                        <div class="form-group"
-                                                                            style="margin-left: 60px;margin-top: -20px;">
-                                                                            <input type="text" name="lrn"
-                                                                                id="" style="width:150px;"
-                                                                                value="{{ $item['lrn'] }}">
-                                                                            <select name="track" id="civilstat"
-                                                                                style="width:150px;margin-left: 33px;">
-                                                                                @if ($item['track'] == 'ABM')
-                                                                                    <option value="ABM" selected>ABM
-                                                                                    </option>
-                                                                                @else
-                                                                                    <option value="ABM">ABM
-                                                                                    </option>
-                                                                                @endif
+                                                                        @if ($item['userType'] == 1)
+                                                                        @else
+                                                                            <div class="form-group"
+                                                                                style="margin-left: 60px;margin-top: -12px;">
+                                                                                <label for="lrn"
+                                                                                    class="for">LRN</label>
+                                                                                <label for="Track" class="for"
+                                                                                    style="margin-left: 153px;">Track</label>
+                                                                            </div>
+                                                                        @endif
 
-                                                                                @if ($item['track'] == 'GAS')
-                                                                                    <option value="GAS" selected>GAS
-                                                                                    </option>
-                                                                                @else
-                                                                                    <option value="GAS">GAS
-                                                                                    </option>
-                                                                                @endif
+                                                                        @if ($item['userType'] == 1)
+                                                                        @else
+                                                                            <div class="form-group"
+                                                                                style="margin-left: 60px;margin-top: -20px;">
+                                                                                <input type="text" name="lrn"
+                                                                                    id=""
+                                                                                    style="width:150px;"
+                                                                                    value="{{ $item['lrn'] }}">
+                                                                                <select name="track" id="civilstat"
+                                                                                    style="width:150px;margin-left: 33px;">
+                                                                                    @if ($item['track'] == 'ABM')
+                                                                                        <option value="ABM"
+                                                                                            selected>ABM
+                                                                                        </option>
+                                                                                    @else
+                                                                                        <option value="ABM">ABM
+                                                                                        </option>
+                                                                                    @endif
 
-                                                                                @if ($item['track'] == 'HUMSS')
-                                                                                    <option value="HUMSS" selected>
-                                                                                        HUMSS
-                                                                                    </option>
-                                                                                @else
-                                                                                    <option value="HUMSS">HUMSS
-                                                                                    </option>
-                                                                                @endif
+                                                                                    @if ($item['track'] == 'GAS')
+                                                                                        <option value="GAS"
+                                                                                            selected>GAS
+                                                                                        </option>
+                                                                                    @else
+                                                                                        <option value="GAS">GAS
+                                                                                        </option>
+                                                                                    @endif
 
-                                                                                @if ($item['track'] == 'STEM')
-                                                                                    <option value="STEM" selected>
-                                                                                        STEM
-                                                                                    </option>
-                                                                                @else
-                                                                                    <option value="STEM">STEM
-                                                                                    </option>
-                                                                                @endif
+                                                                                    @if ($item['track'] == 'HUMSS')
+                                                                                        <option value="HUMSS"
+                                                                                            selected>
+                                                                                            HUMSS
+                                                                                        </option>
+                                                                                    @else
+                                                                                        <option value="HUMSS">HUMSS
+                                                                                        </option>
+                                                                                    @endif
 
-                                                                                @if ($item['track'] == 'TVL')
-                                                                                    <option value="TVL" selected>
-                                                                                        TVL
-                                                                                    </option>
-                                                                                @else
-                                                                                    <option value="TVL">TVL
-                                                                                    </option>
-                                                                                @endif
-                                                                            </select>
-                                                                        </div>
+                                                                                    @if ($item['track'] == 'STEM')
+                                                                                        <option value="STEM"
+                                                                                            selected>
+                                                                                            STEM
+                                                                                        </option>
+                                                                                    @else
+                                                                                        <option value="STEM">STEM
+                                                                                        </option>
+                                                                                    @endif
+
+                                                                                    @if ($item['track'] == 'TVL')
+                                                                                        <option value="TVL"
+                                                                                            selected>
+                                                                                            TVL
+                                                                                        </option>
+                                                                                    @else
+                                                                                        <option value="TVL">TVL
+                                                                                        </option>
+                                                                                    @endif
+                                                                                </select>
+
+                                                                            </div>
+                                                                        @endif
+
                                                                         <div class="form-group"
                                                                             style="margin-left: 60px;margin-top: -12px;">
                                                                             <label for="password"
                                                                                 class="for">Password</label>
-                                                                            <label for="Email" class="for"
-                                                                                style="margin-left: 111px;">Email</label>
+                                                                            @if ($item['userType'] == 1)
+                                                                            @else
+                                                                                <label for="Email" class="for"
+                                                                                    style="margin-left: 111px;">Email</label>
+                                                                            @endif
+
                                                                         </div>
                                                                         <div class="form-group"
                                                                             style="margin-left: 60px;margin-top: -20px;">
                                                                             <input type="password" name="password"
                                                                                 id="vpassword" style="width:150px;">
-                                                                            <input type="email" name="email"
-                                                                                id=""
-                                                                                style="width:150px;margin-left: 33px;"
-                                                                                value="{{ $item['email'] }}">
+                                                                            @if ($item['userType'] == 1)
+                                                                            @else
+                                                                                <input type="email" name="email"
+                                                                                    id=""
+                                                                                    style="width:150px;margin-left: 33px;"
+                                                                                    value="{{ $item['email'] }}">
+                                                                            @endif
+
+
                                                                         </div>
                                                                         <div class="form-group"
                                                                             style="margin-left: 60px;margin-top: -12px;">
@@ -297,14 +321,16 @@
                                                                                         Admin
                                                                                     </option>
                                                                                 @else
-                                                                                    <option value="1">Admin
+                                                                                    <option value="1" disabled>
+                                                                                        Admin
                                                                                     </option>
                                                                                 @endif
                                                                                 @if ($item['userType'] == 2)
                                                                                     <option value="2" selected>
                                                                                         User</option>
                                                                                 @else
-                                                                                    <option value="2">User
+                                                                                    <option value="2" disabled>
+                                                                                        User
                                                                                     </option>
                                                                                 @endif
 
@@ -368,7 +394,12 @@
     </section>
     <!-- ***** Welcome Area End ***** -->
 
-
+    <div>
+        <button class="btn" style="visibility: hidden" data-toggle="modal" data-target="#signUpModal"
+            id="btnSignUpShow"></button>
+        <button class="btn" style="visibility: hidden" data-toggle="modal" data-target="#signUpAdminModal"
+            id="btnSignUpAdminShow"></button>
+    </div>
 
     <!-- ***** Footer Start ***** -->
     <footer style="background-color: #bfbfbf;margin-top: 20px;">
@@ -419,6 +450,101 @@
                         <button type="submit" class="btn btn-primary">Yes, Proceed</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="chooseRoleModal" tabindex="-1" role="dialog"
+        aria-labelledby="chooseRoleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 450px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chooseRoleModalLabel">Choose Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                            <br>
+                            <select name="userrole" id="achooserole" style="width:150px;margin-left: 33px;">
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" name="btnSignUpSuper"
+                        style="background-color: #ff589e" value="yes" data-dismiss="modal"
+                        onclick="chooseRole()">Choose Role</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signUpAdminModal" tabindex="-1" role="dialog"
+        aria-labelledby="signUpAdminModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 450px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpAdminModalLabel">Add Admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form action="/signup" method="POST" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+                            <div class="form-group" style="margin-left: 60px;">
+                                <label for="Username" class="for">Username<span style="color:red">*</span></label>
+                                <label for="Firstname" class="for" style="margin-left: 106px;">First Name<span
+                                        style="color:red">*</span></label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="text" name="username" id="" style="width:150px;">
+                                <input required type="text" name="firstname" id=""
+                                    style="width:150px;margin-left: 33px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="Middlename" class="for">Middle Name<span
+                                        style="color:red">*</span></label>
+                                <label for="Lastname" class="for" style="margin-left: 83px;">Last Name<span
+                                        style="color:red">*</span></label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="text" name="middlename" id=""
+                                    style="width:150px;">
+                                <input required type="text" name="lastname" id=""
+                                    style="width:150px;margin-left: 33px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
+                                <label for="password" class="for">Password<span style="color:red">*</span></label>
+                                <label for="password" class="for" style="margin-left: 107px;">Retype Password<span
+                                        style="color:red">*</span></label>
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input required type="password" name="password" id="apassword" style="width:150px;">
+                                <input required type="password" name="repassword" id="arepassword"
+                                    style="width:150px;margin-left: 32px;">
+                            </div>
+                            <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
+                                <input type="hidden" name="userrole" id="auserrole">
+                            </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="btnSignUpSuper"
+                        style="background-color: #ff589e" value="yes">Add Admin</button>
+                </div>
                 </form>
             </div>
         </div>
@@ -487,16 +613,11 @@
                             <div class="form-group" style="margin-left: 60px;margin-top: -12px;">
                                 <label for="password" class="for">Retype Password<span
                                         style="color:red">*</span></label>
-                                <label for="userrole" class="for" style="margin-left: 53px;">User Role<span
-                                        style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
-                                <select name="userrole" id="userrole" style="width:150px;margin-left: 33px;">
-                                    <option value="1">Admin</option>
-                                    <option value="2">User</option>
-                                </select>
+                                <input type="hidden" name="userrole" id="auserrole">
                             </div>
 
 
@@ -668,6 +789,20 @@
 
         password2.onchange = validatePassword2;
         confirm_password2.onkeyup = validatePassword2;
+
+        function chooseRole() {
+            let chooserole = document.getElementById('achooserole');
+            let userrole = document.getElementById('auserrole');
+            userrole.setAttribute("value", chooserole.value);
+
+            if (chooserole.value == 2) {
+                let btnSignUpShow = document.getElementById('btnSignUpShow');
+                btnSignUpShow.click();
+            } else if (chooserole.value == 1) {
+                let btnSignUpAdminShow = document.getElementById('btnSignUpAdminShow');
+                btnSignUpAdminShow.click();
+            }
+        }
     </script>
 </body>
 
