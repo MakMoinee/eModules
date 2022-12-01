@@ -36,7 +36,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -71,51 +71,56 @@
 
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
+    <section class="section" id="about"
+        style="background: #ff589e;margin-top: 50px; background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
+                    style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
 
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text"
-            style="margin-top: 300px;margin-bottom: 30px;height:850px;background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
-                                <div class="card" style="width: 60rem;height: 100%;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Mission</h5>
-                                        <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
-                                            environmental, skillful,
-                                            and intellectual learner.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+                <div class="col py-3">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <center>
+                                <h1 style="margin-left: -150px;">About US</h1>
+                            </center>
                         </div>
-                        <br>
-                        <br>
-                        <div class="row">
-
-                            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
-                                <div class="card" style="width: 60rem;height:100%">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Vision</h5>
-                                        <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
-                                            the light of Christ through a
-                                            well-rounded educational program and holistic learning experience.
-                                        </p>
-                                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
+                            <div class="card" style="width: 60rem;height: 100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mission</h5>
+                                    <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
+                                        environmental, skillful,
+                                        and intellectual learner.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <br>
+                    <div class="row">
+
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
+                            <div class="card" style="width: 60rem;height:100%;background: #f9efa8;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Vision</h5>
+                                    <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
+                                        the light of Christ through a
+                                        well-rounded educational program and holistic learning experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- ***** Header Text End ***** -->
-    </div>
+    </section>
     <!-- ***** Welcome Area End ***** -->
 
 
