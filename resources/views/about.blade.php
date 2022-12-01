@@ -81,7 +81,7 @@
                     <div class="container-fluid py-4">
                         <div class="row">
                             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 180px;">
-                                <div class="card" style="width: 20rem;height: 100%;">
+                                <div class="card" style="width: 60rem;height: 100%;">
                                     <div class="card-body">
                                         <h5 class="card-title">Mission</h5>
                                         <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
@@ -97,7 +97,7 @@
                         <div class="row">
 
                             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;height: 220px;">
-                                <div class="card" style="width: 20rem;height:100%">
+                                <div class="card" style="width: 60rem;height:100%">
                                     <div class="card-body">
                                         <h5 class="card-title">Vision</h5>
                                         <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
